@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+.dropzone {
+  font-family: 'Inter', sans-serif;
+  border: 3px dashed #67b7dc;
+  border-radius: 16px;
+  background-color: #f0f8ff;
+  color: #0b355f;
+  cursor: pointer;
+  outline: none;
+  padding: 40px 20px;
+  max-width: 600px;
+  margin: 24px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  flex-direction: column;
+
+  &:focus,
+  &:focus-visible {
+    border-color: #4178be;
+    background-color: #e0f0ff;
+    box-shadow: 0 0 8px #4178be;
+  }
+}
+
+.dragging {
+  border-color: #2992d0;
+  background-color: #daf2ff;
+  box-shadow: 0 0 12px #2992d0;
+}
+
+.inner {
+  text-align: center;
+  user-select: none;
+  width: 100%;
+}
+
+.icon {
+  width: 64px;
+  height: 64px;
+  margin-bottom: 16px;
+  stroke: #146eb4;
+  transition: stroke 0.3s ease;
+}
+
+.message {
+  font-weight: 600;
+  font-size: 1.125rem;
+  margin-bottom: 8px;
+}
+
+.videoPreview {
+  max-width: 100%;
+  max-height: 360px;
+  margin-bottom: 12px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.fileName {
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.progress {
+  font-weight: 600;
+  font-size: 1rem;
+  color: #1a73e8;
+  margin-bottom: 8px;
+}
+
+.status {
+  font-weight: 400;
+  font-size: 1rem;
+  color: #2f6cb1;
+  margin-top: 4px;
+}
+
+.uploadButton {
+  display: block;
+  margin: 0 auto 32px auto;
+  padding: 12px 36px;
+  font-weight: 700;
+  font-size: 1rem;
+  background-color: #146eb4;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  user-select: none;
+}
+
+.uploadButton:hover,
+.uploadButton:focus-visible {
+  background-color: #0f54a1;
+  outline: none;
+}
