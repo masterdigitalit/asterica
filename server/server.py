@@ -7,6 +7,7 @@ from user.sendCircleToUser  import sendVideoToUser
 
 app = Quart(__name__)
 cors(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 UPLOAD_FOLDER = "../timeMedia"
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
@@ -64,20 +65,26 @@ async def get_items():
 async def upload_file():
     files = await request.files
     data  = await request.form  # Await request.files to get the files dict
+
     if 'file' not in files:
+
         return jsonify({'error': 'No file part in the request'}), 400
 
     file = files['file']
     if file.filename == '':
+
         return jsonify({'error': 'No file selected'}), 400
 
     aspect_ratio =  data.get('aspectRatio', type=float)
     center =  data.get('center', default='center')
 
+
     if not aspect_ratio or aspect_ratio <= 0:
+
         return jsonify({'error': 'Invalid or missing aspectRatio parameter'}), 400
 
     if center not in ('center', 'top', 'bottom', 'left', 'right'):
+
         return jsonify({'error': 'Invalid center parameter'}), 400
 
 
@@ -90,6 +97,7 @@ async def upload_file():
 
         await crop_video(file.filename, aspect_ratio, center)
         await sendVideoToUser(f"update_{file.filename}")
+        os.remove(f"../timeMedia/update_{file.filename}")
         return jsonify({'message': 'File uploaded and cropped successfully'}), 200
     except Exception as e:
         print(e)

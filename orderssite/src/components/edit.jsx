@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import styles from '../styles/VideoEditor.module.scss';
-
-
+import axios from '../axiosConfig'; // Import the Axios configuration
 
 const ASPECT_RATIOS = [
   { label: '16:9', value: 16 / 9 },
@@ -19,85 +18,30 @@ const CENTER_OPTIONS = [
 ];
 
 function VideoEditorOnlineUpload() {
-	let  uploadUrl  = 'http://192.168.1.4:5000/upload_file'
+  const uploadUrl = '/upload_file'; // Use relative URL since baseURL is set in axiosConfig
   const [videoFile, setVideoFile] = useState(null);
   const [previewUrl, setPreviewUrl] = useState(null);
   const [aspectRatio, setAspectRatio] = useState(16 / 9);
   const [center, setCenter] = useState('center');
-  const [croppedBlob, setCroppedBlob] = useState(null);
   const [uploadProgress, setUploadProgress] = useState(null);
   const [status, setStatus] = useState(null);
-  const videoRef = useRef(null);
-  const canvasRef = useRef(null);
   const fileInputRef = useRef(null);
 
   useEffect(() => {
     if (!videoFile) {
       setPreviewUrl(null);
-      setCroppedBlob(null);
       setStatus(null);
       setUploadProgress(null);
       return;
     }
     const url = URL.createObjectURL(videoFile);
     setPreviewUrl(url);
-    setCroppedBlob(null);
-    setStatus(null);
-    setUploadProgress(null);
     return () => {
       URL.revokeObjectURL(url);
     };
   }, [videoFile]);
 
-  // Calculate cropping rectangle
-  const getCropRect = (videoWidth, videoHeight) => {
-    let cropWidth, cropHeight;
-    if (videoWidth / videoHeight > aspectRatio) {
-      cropHeight = videoHeight;
-      cropWidth = cropHeight * aspectRatio;
-    } else {
-      cropWidth = videoWidth;
-      cropHeight = cropWidth / aspectRatio;
-    }
-
-    let cropX = 0,
-      cropY = 0;
-    switch (center) {
-      case 'center':
-        cropX = (videoWidth - cropWidth) / 2;
-        cropY = (videoHeight - cropHeight) / 2;
-        break;
-      case 'top':
-        cropX = (videoWidth - cropWidth) / 2;
-        cropY = 0;
-        break;
-      case 'bottom':
-        cropX = (videoWidth - cropWidth) / 2;
-        cropY = videoHeight - cropHeight;
-        break;
-      case 'left':
-        cropX = 0;
-        cropY = (videoHeight - cropHeight) / 2;
-        break;
-      case 'right':
-        cropX = videoWidth - cropWidth;
-        cropY = (videoHeight - cropHeight) / 2;
-        break;
-      default:
-        cropX = (videoWidth - cropWidth) / 2;
-        cropY = (videoHeight - cropHeight) / 2;
-    }
-    return { cropX, cropY, cropWidth, cropHeight };
-  };
-
-  // Capture and store cropped frame as canvas content (image only)
-  // Note: to send actual cropped video in mp4 format requires transcoding,
-  // which isn't possible with simple canvas. So here we send full original video file.
-  // You can modify backend to handle cropping parameters if needed.
-  
-  // For demonstration, we send the original video file with cropping metadata
-
-  const uploadVideo = () => {
+  const uploadVideo = async () => {
     if (!videoFile) {
       setStatus('No video selected for upload.');
       return;
@@ -110,33 +54,27 @@ function VideoEditorOnlineUpload() {
     formData.append('file', videoFile, videoFile.name);
     formData.append('aspectRatio', aspectRatio);
     formData.append('center', center);
+    
 
-    const xhr = new XMLHttpRequest();
+    try {
+      const response = await axios.post(uploadUrl, formData, {headers: {"Content-Type":'multipart/form-data'}},  {
+        onUploadProgress: (progressEvent) => {
+          const percent = Math.round((progressEvent.loaded / progressEvent.total) * 100);
+          setUploadProgress(percent);
+        },
+      });
 
-    xhr.upload.onprogress = (event) => {
-      if (event.lengthComputable) {
-        const percent = Math.round((event.loaded / event.total) * 100);
-        setUploadProgress(percent);
-      }
-    };
-
-    xhr.onload = () => {
-      if (xhr.status >= 200 && xhr.status < 300) {
+      if (response.status >= 200 && response.status < 300) {
         setStatus('Upload successful!');
         setUploadProgress(null);
       } else {
-        setStatus(`Upload failed: ${xhr.statusText || xhr.status}`);
+        setStatus(`Upload failed: ${response.statusText || response.status}`);
         setUploadProgress(null);
       }
-    };
-
-    xhr.onerror = () => {
+    } catch (error) {
       setStatus('Upload error occurred.');
       setUploadProgress(null);
-    };
-
-    xhr.open('POST', uploadUrl);
-    xhr.send(formData);
+    }
   };
 
   const getObjectPosition = () => {

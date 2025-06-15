@@ -4,6 +4,8 @@
 /node_modules
 /.pnp
 .pnp.js
+../timeMedia
+.mp4
 
 # testing
 /coverage

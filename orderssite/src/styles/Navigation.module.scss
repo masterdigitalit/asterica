@@ -1,0 +1,11 @@
+.header {
+	position: absolute;
+	height: 30px;
+	z-index: 1000;
+	width: 100vw;
+	display: flex;
+	align-items: center;
+	top: 0;
+	justify-content: center;
+	font-size: large;
+}

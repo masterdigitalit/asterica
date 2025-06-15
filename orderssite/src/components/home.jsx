@@ -1,6 +1,7 @@
-import  { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "../styles/GetItemsList.module.scss";
 import { Link } from "react-router-dom";
+import axios from '../axiosConfig'; // Import the Axios configuration
 
 function GetItemsList() {
   const [items, setItems] = useState([]);
@@ -10,41 +11,36 @@ function GetItemsList() {
   const [filter, setFilter] = useState("all"); // State for filter
 
   useEffect(() => {
-    setLoading(true);
-    fetch("http://192.168.1.4:5000/get_items")
-      .then(async (res) => {
-        if (!res.ok) {
-          const errorText = await res.text();
-          throw new Error(errorText || "Failed to fetch items");
-        }
-        return res.json();
-      })
-      .then((data) => {
-        setItems(data);
-        setDataFilter(data);
+    const fetchItems = async () => {
+      setLoading(true);
+      try {
+        const response = await axios.get("/get_items");
+        setItems(response.data);
+        setDataFilter(response.data);
+      } catch (err) {
+        setError(err.response?.data?.error || err.message || "Error occurred");
+      } finally {
         setLoading(false);
-      })
-      .catch((err) => {
-        setError(err.message || "Error occurred");
-        setLoading(false);
-      });
+      }
+    };
+
+    fetchItems();
   }, []);
-  console.log(dataFilter, items);
+
   useEffect(() => {
     setDataFilter(
       items.filter((item) => {
-        if (filter === "all") return items; // Show all items
+        if (filter === "all") return true; // Show all items
         return item.state === filter; // Filter by state
       })
     );
-    console.log(dataFilter);
-  }, [filter]);
+  }, [filter, items]);
 
   if (loading) return <p className={styles.status}>Loading items...</p>;
   if (error) return <p className={styles.error}>Error: {error}</p>;
 
   return (
-    <div>
+    <>
       <div className={styles.filterButtons}>
         <button
           onClick={() => setFilter("all")}
@@ -60,22 +56,19 @@ function GetItemsList() {
         </button>
       </div>
 
-      <ul className={styles.itemsList}>
+      <div className={styles.itemsList}>
         {dataFilter.map((item) => (
-					<Link to={`/page/${item.uuid}`}>
-          <li
-            key={`${item.id}_${item.uuid}`}
-            className={`${styles.item} ${
-              item.state === "1" ? styles.green : styles.red
-            }`}
-          >
-            <h3 className={styles.itemName}>{item.title}</h3>
-            <p className={styles.itemValue}>{item.description}</p>
-          </li>
-					</Link>
+          <Link to={`/page/${item.uuid}`} key={`${item.id}_${item.uuid}`}>
+            <div className={styles.item}>
+              <h3 className={`${styles.itemName} ${item.state === "1" ? styles.green : styles.red}`}>
+                {item.title}
+              </h3>
+              <p className={styles.itemValue}>{item.description}</p>
+            </div>
+          </Link>
         ))}
-      </ul>
-    </div>
+      </div>
+    </>
   );
 }
 

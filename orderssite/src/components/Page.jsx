@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import styles from "../styles/Page.module.scss";
 import { Link } from "react-router-dom";
 import DragDropFileUpload from "./fileDrop";
+import VideoEditorOnlineUpload from "./edit";
+import axios from '../axiosConfig.js'; // Import the Axios configuration
 
 function Page() {
   const { linkId } = useParams();
@@ -17,65 +19,55 @@ function Page() {
     setError(null);
     setData(null);
 
-    const serverUrl = "http://192.168.1.4:5000/get_item";
-
-    fetch(serverUrl, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ param: linkId }),
-    })
-      .then(async (res) => {
-        if (!res.ok) {
-          const errorData = await res.json().catch(() => ({}));
-          const message =
-            errorData.error || `Request failed with status ${res.status}`;
-          throw new Error(message);
-        }
-        return res.json();
-      })
-      .then((json) => {
-        setData(json);
-      })
-      .catch((err) => {
-        setError(err.message);
-      })
-      .finally(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.post('/get_item', { param: linkId });
+        setData(response.data);
+      } catch (err) {
+        setError(err.response?.data?.error || err.message);
+      } finally {
         setLoading(false);
-      });
+      }
+    };
+
+    fetchData();
   }, [linkId]);
 
-  if (loading === true) {
-    return <>loading</>;
+  if (loading) {
+    return <>Loading...</>;
   }
-  if (data != null && loading === false) {
+
+  if (data != null && !loading) {
     const state = data[0];
 
     return (
       <>
         <div className={styles.component}>
-          <div className={styles.item}>telegram id : {state.id}</div>
-          <div className={styles.item}>Имя : {state.title}</div>
-          <div className={styles.item}>Дата рождения : {state.date}</div>
-          <div className={styles.item}>Комментарий : {state.description}</div>
+          <div className={styles.item}>Telegram ID: {state.id}</div>
+          <div className={styles.item}>Имя: {state.title}</div>
+          <div className={styles.item}>Дата рождения: {state.date}</div>
+          <div className={styles.item}>Комментарий: {state.description}</div>
           <div className={styles.item}>
-            Состояние : {state.state === "1" ? "готово" : "не готово"}
+            Состояние: {state.state === "1" ? "Готово" : "Не готово"}
           </div>
           <div className={styles.item}>
-            Ссылка :{" "}
+            Ссылка:{" "}
             <Link to={`http://192.168.1.4:3000/page/${state.uuid}`}>
-              http://192.168.1.2:3000/page/{state.uuid}
+              http://192.168.1.4:3000/page/{state.uuid}
             </Link>
           </div>
-          <DragDropFileUpload name={linkId + ".mp4"} />
+
+          <VideoEditorOnlineUpload fileName={linkId + ".mp4"} />
         </div>
       </>
     );
   }
+
   if (error) {
-    return error;
+    return <div className={styles.error}>{error}</div>;
   }
+
+  return null; // Return null if no data and no error
 }
 
 export default Page;
