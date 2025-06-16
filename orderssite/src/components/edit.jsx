@@ -2,12 +2,12 @@ import React, { useState, useRef, useEffect } from 'react';
 import styles from '../styles/VideoEditor.module.scss';
 import axios from '../axiosConfig'; // Import the Axios configuration
 
-const ASPECT_RATIOS = [
-  { label: '16:9', value: 16 / 9 },
-  { label: '4:3', value: 4 / 3 },
-  { label: '1:1', value: 1 },
-  { label: '9:16 (Portrait)', value: 9 / 16 },
-];
+// const ASPECT_RATIOS = [
+//   { label: '16:9', value: 16 / 9 },
+//   { label: '4:3', value: 4 / 3 },
+//   { label: '1:1', value: 1 },
+//   { label: '9:16 (Portrait)', value: 9 / 16 },
+// ];
 
 const CENTER_OPTIONS = [
   { label: 'Center', value: 'center' },
@@ -21,7 +21,7 @@ function VideoEditorOnlineUpload() {
   const uploadUrl = '/upload_file'; // Use relative URL since baseURL is set in axiosConfig
   const [videoFile, setVideoFile] = useState(null);
   const [previewUrl, setPreviewUrl] = useState(null);
-  const [aspectRatio, setAspectRatio] = useState(16 / 9);
+  const [aspectRatio, setAspectRatio] = useState(1);
   const [center, setCenter] = useState('center');
   const [uploadProgress, setUploadProgress] = useState(null);
   const [status, setStatus] = useState(null);
@@ -53,6 +53,7 @@ function VideoEditorOnlineUpload() {
     const formData = new FormData();
     formData.append('file', videoFile, videoFile.name);
     formData.append('aspectRatio', aspectRatio);
+    console.log(aspectRatio)
     formData.append('center', center);
     
 
@@ -126,7 +127,7 @@ function VideoEditorOnlineUpload() {
           Select Video (MP4)
         </label>
 
-        <div className={styles.selectGroup}>
+        {/* <div className={styles.selectGroup}>
           <label htmlFor="aspectSelect">Aspect Ratio:</label>
           <select
             id="aspectSelect"
@@ -138,7 +139,7 @@ function VideoEditorOnlineUpload() {
               <option key={label} value={value}>{label}</option>
             ))}
           </select>
-        </div>
+        </div> */}
 
         <div className={styles.selectGroup}>
           <label htmlFor="centerSelect">Center Position:</label>
