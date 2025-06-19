@@ -56,8 +56,8 @@ function Page() {
               http://192.168.1.4:3000/page/{state.uuid}
             </Link>
           </div>
-
-          <VideoEditorOnlineUpload fileName={linkId + ".mp4"} />
+{state.state === "1" ? (<></>) : <VideoEditorOnlineUpload link={linkId} />}
+          
         </div>
       </>
     );

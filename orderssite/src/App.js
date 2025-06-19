@@ -18,6 +18,8 @@ function App() {
           <Route path="/" element={<GetItemsList/>} />
           <Route path="*" element={<Page />} />
           <Route path="/edit" element={<VideoEditor />} />
+
+
         </Routes>
       </BrowserRouter>
     </div>

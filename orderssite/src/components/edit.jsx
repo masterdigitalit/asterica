@@ -17,7 +17,7 @@ const CENTER_OPTIONS = [
   { label: 'Right', value: 'right' },
 ];
 
-function VideoEditorOnlineUpload() {
+function VideoEditorOnlineUpload({link}) {
   const uploadUrl = '/upload_file'; // Use relative URL since baseURL is set in axiosConfig
   const [videoFile, setVideoFile] = useState(null);
   const [previewUrl, setPreviewUrl] = useState(null);
@@ -25,6 +25,8 @@ function VideoEditorOnlineUpload() {
   const [center, setCenter] = useState('center');
   const [uploadProgress, setUploadProgress] = useState(null);
   const [status, setStatus] = useState(null);
+  const [feedBack, setFeedBack] = useState(null);
+
   const fileInputRef = useRef(null);
 
   useEffect(() => {
@@ -51,7 +53,8 @@ function VideoEditorOnlineUpload() {
     setUploadProgress(0);
 
     const formData = new FormData();
-    formData.append('file', videoFile, videoFile.name);
+    formData.append('file', videoFile, (link + ".mp4"));
+    formData.append('uuid', link)
     formData.append('aspectRatio', aspectRatio);
     console.log(aspectRatio)
     formData.append('center', center);
@@ -66,6 +69,8 @@ function VideoEditorOnlineUpload() {
       });
 
       if (response.status >= 200 && response.status < 300) {
+        setFeedBack(response.data.feedback)
+
         setStatus('Upload successful!');
         setUploadProgress(null);
       } else {
@@ -102,7 +107,8 @@ function VideoEditorOnlineUpload() {
     borderRadius: '12px',
     backgroundColor: '#000',
     marginTop: '16px',
-    boxShadow: '0 8px 24px rgba(0,0,0,0.3)',
+
+    backgroundColor:'fff',
   };
 
   const videoStyle = {
@@ -110,7 +116,9 @@ function VideoEditorOnlineUpload() {
     height: '100%',
     objectFit: 'cover',
     objectPosition: getObjectPosition(),
+    borderRadius:"50%",
   };
+  console.log(feedBack)
 
   return (
     <div className={styles.videoEditorOnlineUpload}>
@@ -126,21 +134,6 @@ function VideoEditorOnlineUpload() {
         <label htmlFor="video-upload-input" className={styles.fileInputLabel}>
           Select Video (MP4)
         </label>
-
-        {/* <div className={styles.selectGroup}>
-          <label htmlFor="aspectSelect">Aspect Ratio:</label>
-          <select
-            id="aspectSelect"
-            value={aspectRatio}
-            onChange={e => setAspectRatio(Number(e.target.value))}
-            className={styles.select}
-          >
-            {ASPECT_RATIOS.map(({ label, value }) => (
-              <option key={label} value={value}>{label}</option>
-            ))}
-          </select>
-        </div> */}
-
         <div className={styles.selectGroup}>
           <label htmlFor="centerSelect">Center Position:</label>
           <select
@@ -169,7 +162,8 @@ function VideoEditorOnlineUpload() {
         <div style={containerStyle} aria-label="Video preview container">
           <video
             src={previewUrl}
-            controls
+            controls={false}
+            autoPlay={true}
             style={videoStyle}
             aria-label="Video preview with crop and center selection"
             muted
@@ -177,9 +171,18 @@ function VideoEditorOnlineUpload() {
         </div>
       )}
 
-      {uploadProgress !== null && (
-        <p className={styles.progress}>Uploading: {uploadProgress}%</p>
+   <div className={styles.progress}>
+      {feedBack !== null && (
+        <>
+        
+        <p className={styles.progress}>Получено: {feedBack.got ? ('да'): ('нет')}</p>
+        <p className={styles.progress}>Сохранено: {feedBack.send ? ('да'): ('нет')}</p>
+        <p className={styles.progress}>Отредактировано: {feedBack.send ? ('да'): ('нет')}</p>
+        <p className={styles.progress}>Отправлено: {feedBack.send ? ('да'): ('нет')}</p>
+        <p className={styles.progress}>Удалено: {feedBack.send ? ('да'): ('нет')}</p>
+        </>
       )}
+      </div>
       {status && <p className={styles.status}>{status}</p>}
     </div>
   );

@@ -32,6 +32,9 @@ function GetItemsList() {
       items.filter((item) => {
         if (filter === "all") return true; // Show all items
         return item.state === filter; // Filter by state
+      }).sort((a, b) => {
+        // Sort items: not ready (state "0") first, then ready (state "1")
+        return a.state.localeCompare(b.state);
       })
     );
   }, [filter, items]);

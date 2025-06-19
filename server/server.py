@@ -2,21 +2,26 @@ from quart import Quart, request, jsonify
 from quart_cors import cors
 import os
 import logging
-from db.main import getOrder, getAllOrders
+from db.main import getOrder, getAllOrders, updateTaskState
 from utils.videoEditor import videoResize, crop_video
 from user.sendCircleToUser  import sendVideoToUser
 
 # Initialize the Quart app
 app = Quart(__name__)
 cors(app)
+
 app.config['CORS_HEADERS'] = 'Content-Type'
 
 # Set up logging
 LOG_FORMAT = "%(asctime)s - %(levelname)s - %(message)s"
 logging.basicConfig(level=logging.DEBUG, format=LOG_FORMAT, handlers=[
-    logging.FileHandler("app.log"),  # Log to a file
+    logging.FileHandler("app.log", encoding='UTF-8'),  # Log to a file
     logging.StreamHandler()            # Log to console
 ])
+
+# Disable Flask's default logging
+flask_logger = logging.getLogger('quart')
+flask_logger.propagate = False
 
 UPLOAD_FOLDER = "../timeMedia"
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
@@ -66,8 +71,10 @@ async def get_items():
 
 @app.route('/upload_file', methods=['POST'])
 async def upload_file():
+    feedback = {"got" : False , "saved":False,"croped" : False, "send" : False, "deleted" : False, 'updated':False }
     files = await request.files
     data = await request.form  # Await request.files to get the files dict
+    feedback["got"] = True
 
     if 'file' not in files:
         logging.error('No file part in the request')
@@ -79,7 +86,9 @@ async def upload_file():
         return jsonify({'error': 'No file selected'}), 400
 
     aspect_ratio = data.get('aspectRatio', type=float)
+    uuid = data.get('uuid', type=str)
     center = data.get('center', default='center')
+
 
     if not aspect_ratio or aspect_ratio <= 0:
         logging.error('Invalid or missing aspectRatio parameter')
@@ -90,16 +99,24 @@ async def upload_file():
         return jsonify({'error': 'Invalid center parameter'}), 400
 
     try:
+
         filename = file.filename
         save_path = os.path.join(UPLOAD_FOLDER, filename)
         await file.save(save_path)
+        feedback["saved"] = True
         logging.info(f"File saved to {save_path}")
 
         await crop_video(file.filename, aspect_ratio, center)
-        await sendVideoToUser (f"update_{file.filename}")
+        feedback["croped"] = True
+        user = await  getOrder(uuid)
+
+        await sendVideoToUser (id=user[0][0] , name=f"update_{file.filename}")
+        feedback["send"] = True
         os.remove(f"{UPLOAD_FOLDER}/update_{file.filename}")
+        feedback["deleted"] = True
         logging.info(f"File uploaded and cropped successfully: {filename}")
-        return jsonify({'message': 'File uploaded and cropped successfully'}), 200
+        await updateTaskState(uuid)
+        return jsonify({'message': 'File uploaded and cropped successfully', "feedback":feedback}), 200
     except Exception as e:
         logging.exception("An error occurred during file upload")
         return jsonify({'error': str(e)}), 500

@@ -38,7 +38,16 @@ async def getAllOrders():
     print(req)
 
     return req
+async def updateTaskState(uuid):
+    cursor = con.cursor()
+    req = cursor.execute("""UPDATE Orders SET Status = 1 WHERE Link = ? """,[uuid] )
+    con.commit()
+    cursor.close()
 
 
+    return req
+
+
+# print( updateTaskState('8fffd6f6-b867-4ef6-9dee-d29341b6eb7c'))
 # createTable()
 # getAdminsId()
