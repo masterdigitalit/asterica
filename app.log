@@ -1,0 +1,639 @@
+2025-06-19 23:04:20,370 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.4:5000
+2025-06-19 23:04:20,370 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-19 23:04:20,372 - INFO -  * Restarting with stat
+2025-06-19 23:04:23,867 - WARNING -  * Debugger is active!
+2025-06-19 23:04:23,875 - INFO -  * Debugger PIN: 775-646-217
+2025-06-19 23:04:24,127 - INFO - File saved to ./timeMedia\d07df855-a741-442f-9e62-6a1a29d2f4a8.mp4
+2025-06-19 23:04:25,300 - ERROR - An error occurred during file upload
+Traceback (most recent call last):
+  File "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python39_64\lib\site-packages\moviepy\video\io\ffmpeg_writer.py", line 136, in write_frame
+    self.proc.stdin.write(img_array.tobytes())
+BrokenPipeError: [Errno 32] Broken pipe
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\maksi\PycharmProjects\asterica\server.py", line 111, in upload_file
+    crop_video(file.filename, aspect_ratio, center)
+  File "C:\Users\maksi\PycharmProjects\asterica\utils\videoEditor.py", line 43, in crop_video
+    cropped_clip.write_videofile(
+  File "<decorator-gen-55>", line 2, in write_videofile
+  File "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python39_64\lib\site-packages\moviepy\decorators.py", line 54, in requires_duration
+    return f(clip, *a, **k)
+  File "<decorator-gen-54>", line 2, in write_videofile
+  File "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python39_64\lib\site-packages\moviepy\decorators.py", line 135, in use_clip_fps_by_default
+    return f(clip, *new_a, **new_kw)
+  File "<decorator-gen-53>", line 2, in write_videofile
+  File "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python39_64\lib\site-packages\moviepy\decorators.py", line 22, in convert_masks_to_RGB
+    return f(clip, *a, **k)
+  File "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python39_64\lib\site-packages\moviepy\video\VideoClip.py", line 300, in write_videofile
+    ffmpeg_write_video(self, filename, fps, codec,
+  File "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python39_64\lib\site-packages\moviepy\video\io\ffmpeg_writer.py", line 228, in ffmpeg_write_video
+    writer.write_frame(frame)
+  File "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python39_64\lib\site-packages\moviepy\video\io\ffmpeg_writer.py", line 180, in write_frame
+    raise IOError(error)
+OSError: [Errno 32] Broken pipe
+
+MoviePy error: FFMPEG encountered the following error while writing file ../timeMedia/update_d07df855-a741-442f-9e62-6a1a29d2f4a8.mp4:
+
+ b'[out#0/mp4 @ 00000167548c5e80] Error opening output ../timeMedia/update_d07df855-a741-442f-9e62-6a1a29d2f4a8.mp4: No such file or directory\r\nError opening output file ../timeMedia/update_d07df855-a741-442f-9e62-6a1a29d2f4a8.mp4.\r\nError opening output files: No such file or directory\r\n'
+2025-06-19 23:04:25,345 - INFO - 127.0.0.1 - - [19/Jun/2025 23:04:25] "[35m[1mPOST /upload_file HTTP/1.1[0m" 500 -
+2025-06-19 23:05:43,867 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.4:5000
+2025-06-19 23:05:43,868 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-19 23:05:43,869 - INFO -  * Restarting with stat
+2025-06-19 23:05:46,933 - WARNING -  * Debugger is active!
+2025-06-19 23:05:46,941 - INFO -  * Debugger PIN: 775-646-217
+2025-06-19 23:05:47,175 - INFO - File saved to ./timeMedia\d07df855-a741-442f-9e62-6a1a29d2f4a8.mp4
+2025-06-19 23:05:49,794 - ERROR - An error occurred during file upload
+Traceback (most recent call last):
+  File "C:\Users\maksi\PycharmProjects\asterica\server.py", line 111, in upload_file
+    crop_video(file.filename, aspect_ratio, center)
+  File "C:\Users\maksi\PycharmProjects\asterica\utils\videoEditor.py", line 58, in crop_video
+    os.remove(f"../timeMedia/{name}")
+FileNotFoundError: [WinError 3] Системе не удается найти указанный путь: '../timeMedia/d07df855-a741-442f-9e62-6a1a29d2f4a8.mp4'
+2025-06-19 23:05:49,796 - INFO - 127.0.0.1 - - [19/Jun/2025 23:05:49] "[35m[1mPOST /upload_file HTTP/1.1[0m" 500 -
+2025-06-19 23:06:21,883 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.4:5000
+2025-06-19 23:06:21,883 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-19 23:06:21,885 - INFO -  * Restarting with stat
+2025-06-19 23:06:24,869 - WARNING -  * Debugger is active!
+2025-06-19 23:06:24,878 - INFO -  * Debugger PIN: 775-646-217
+2025-06-19 23:06:29,697 - INFO - File saved to ./timeMedia\d07df855-a741-442f-9e62-6a1a29d2f4a8.mp4
+2025-06-19 23:06:33,403 - ERROR - An error occurred during file upload
+Traceback (most recent call last):
+  File "C:\Users\maksi\PycharmProjects\asterica\server.py", line 117, in upload_file
+    os.remove(f"{UPLOAD_FOLDER}/update_{file.filename}")
+FileNotFoundError: [WinError 2] Не удается найти указанный файл: './timeMedia/update_d07df855-a741-442f-9e62-6a1a29d2f4a8.mp4'
+2025-06-19 23:06:33,404 - INFO - 127.0.0.1 - - [19/Jun/2025 23:06:33] "[35m[1mPOST /upload_file HTTP/1.1[0m" 500 -
+2025-06-19 23:07:18,044 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.4:5000
+2025-06-19 23:07:18,045 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-19 23:07:18,046 - INFO -  * Restarting with stat
+2025-06-19 23:07:21,128 - WARNING -  * Debugger is active!
+2025-06-19 23:07:21,137 - INFO -  * Debugger PIN: 775-646-217
+2025-06-19 23:08:20,869 - INFO - File saved to ./timeMedia\d07df855-a741-442f-9e62-6a1a29d2f4a8.mp4
+2025-06-19 23:08:20,902 - ERROR - An error occurred during file upload
+Traceback (most recent call last):
+  File "C:\Users\maksi\PycharmProjects\asterica\server.py", line 111, in upload_file
+    crop_video(file.filename, aspect_ratio, center)
+  File "C:\Users\maksi\PycharmProjects\asterica\utils\videoEditor.py", line 4, in crop_video
+    clip = VideoFileClip(f'/timeMedia/{name}')
+  File "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python39_64\lib\site-packages\moviepy\video\io\VideoFileClip.py", line 88, in __init__
+    self.reader = FFMPEG_VideoReader(filename, pix_fmt=pix_fmt,
+  File "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python39_64\lib\site-packages\moviepy\video\io\ffmpeg_reader.py", line 35, in __init__
+    infos = ffmpeg_parse_infos(filename, print_infos, check_duration,
+  File "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python39_64\lib\site-packages\moviepy\video\io\ffmpeg_reader.py", line 270, in ffmpeg_parse_infos
+    raise IOError(("MoviePy error: the file %s could not be found!\n"
+OSError: MoviePy error: the file /timeMedia/d07df855-a741-442f-9e62-6a1a29d2f4a8.mp4 could not be found!
+Please check that you entered the correct path.
+2025-06-19 23:08:20,904 - INFO - 127.0.0.1 - - [19/Jun/2025 23:08:20] "[35m[1mPOST /upload_file HTTP/1.1[0m" 500 -
+2025-06-19 23:08:21,694 - INFO - File saved to ./timeMedia\d07df855-a741-442f-9e62-6a1a29d2f4a8.mp4
+2025-06-19 23:08:21,725 - ERROR - An error occurred during file upload
+Traceback (most recent call last):
+  File "C:\Users\maksi\PycharmProjects\asterica\server.py", line 111, in upload_file
+    crop_video(file.filename, aspect_ratio, center)
+  File "C:\Users\maksi\PycharmProjects\asterica\utils\videoEditor.py", line 4, in crop_video
+    clip = VideoFileClip(f'/timeMedia/{name}')
+  File "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python39_64\lib\site-packages\moviepy\video\io\VideoFileClip.py", line 88, in __init__
+    self.reader = FFMPEG_VideoReader(filename, pix_fmt=pix_fmt,
+  File "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python39_64\lib\site-packages\moviepy\video\io\ffmpeg_reader.py", line 35, in __init__
+    infos = ffmpeg_parse_infos(filename, print_infos, check_duration,
+  File "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python39_64\lib\site-packages\moviepy\video\io\ffmpeg_reader.py", line 270, in ffmpeg_parse_infos
+    raise IOError(("MoviePy error: the file %s could not be found!\n"
+OSError: MoviePy error: the file /timeMedia/d07df855-a741-442f-9e62-6a1a29d2f4a8.mp4 could not be found!
+Please check that you entered the correct path.
+2025-06-19 23:08:21,726 - INFO - 127.0.0.1 - - [19/Jun/2025 23:08:21] "[35m[1mPOST /upload_file HTTP/1.1[0m" 500 -
+2025-06-19 23:08:35,096 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.4:5000
+2025-06-19 23:08:35,096 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-19 23:08:35,098 - INFO -  * Restarting with stat
+2025-06-19 23:08:38,022 - WARNING -  * Debugger is active!
+2025-06-19 23:08:38,030 - INFO -  * Debugger PIN: 775-646-217
+2025-06-19 23:08:40,829 - INFO - File saved to ./timeMedia\d07df855-a741-442f-9e62-6a1a29d2f4a8.mp4
+2025-06-19 23:08:40,891 - ERROR - An error occurred during file upload
+Traceback (most recent call last):
+  File "C:\Users\maksi\PycharmProjects\asterica\server.py", line 111, in upload_file
+    crop_video(file.filename, aspect_ratio, center)
+  File "C:\Users\maksi\PycharmProjects\asterica\utils\videoEditor.py", line 4, in crop_video
+    clip = VideoFileClip(f'/timeMedia/{name}')
+  File "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python39_64\lib\site-packages\moviepy\video\io\VideoFileClip.py", line 88, in __init__
+    self.reader = FFMPEG_VideoReader(filename, pix_fmt=pix_fmt,
+  File "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python39_64\lib\site-packages\moviepy\video\io\ffmpeg_reader.py", line 35, in __init__
+    infos = ffmpeg_parse_infos(filename, print_infos, check_duration,
+  File "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python39_64\lib\site-packages\moviepy\video\io\ffmpeg_reader.py", line 270, in ffmpeg_parse_infos
+    raise IOError(("MoviePy error: the file %s could not be found!\n"
+OSError: MoviePy error: the file /timeMedia/d07df855-a741-442f-9e62-6a1a29d2f4a8.mp4 could not be found!
+Please check that you entered the correct path.
+2025-06-19 23:08:40,894 - INFO - 127.0.0.1 - - [19/Jun/2025 23:08:40] "[35m[1mPOST /upload_file HTTP/1.1[0m" 500 -
+2025-06-19 23:08:56,598 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.4:5000
+2025-06-19 23:08:56,598 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-19 23:08:56,600 - INFO -  * Restarting with stat
+2025-06-19 23:08:59,523 - WARNING -  * Debugger is active!
+2025-06-19 23:08:59,532 - INFO -  * Debugger PIN: 775-646-217
+2025-06-19 23:08:59,645 - INFO - File saved to ./timeMedia\d07df855-a741-442f-9e62-6a1a29d2f4a8.mp4
+2025-06-19 23:08:59,695 - ERROR - An error occurred during file upload
+Traceback (most recent call last):
+  File "C:\Users\maksi\PycharmProjects\asterica\server.py", line 111, in upload_file
+    crop_video(file.filename, aspect_ratio, center)
+  File "C:\Users\maksi\PycharmProjects\asterica\utils\videoEditor.py", line 4, in crop_video
+    clip = VideoFileClip(f'/timeMedia/{name}')
+  File "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python39_64\lib\site-packages\moviepy\video\io\VideoFileClip.py", line 88, in __init__
+    self.reader = FFMPEG_VideoReader(filename, pix_fmt=pix_fmt,
+  File "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python39_64\lib\site-packages\moviepy\video\io\ffmpeg_reader.py", line 35, in __init__
+    infos = ffmpeg_parse_infos(filename, print_infos, check_duration,
+  File "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python39_64\lib\site-packages\moviepy\video\io\ffmpeg_reader.py", line 270, in ffmpeg_parse_infos
+    raise IOError(("MoviePy error: the file %s could not be found!\n"
+OSError: MoviePy error: the file /timeMedia/d07df855-a741-442f-9e62-6a1a29d2f4a8.mp4 could not be found!
+Please check that you entered the correct path.
+2025-06-19 23:08:59,698 - INFO - 127.0.0.1 - - [19/Jun/2025 23:08:59] "[35m[1mPOST /upload_file HTTP/1.1[0m" 500 -
+2025-06-19 23:10:23,951 - INFO -  * Detected change in 'C:\\Users\\maksi\\PycharmProjects\\asterica\\server.py', reloading
+2025-06-19 23:10:24,768 - INFO -  * Restarting with stat
+2025-06-19 23:10:28,351 - WARNING -  * Debugger is active!
+2025-06-19 23:10:28,360 - INFO -  * Debugger PIN: 775-646-217
+2025-06-19 23:11:04,608 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.4:5000
+2025-06-19 23:11:04,609 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-19 23:11:04,613 - INFO -  * Restarting with stat
+2025-06-19 23:11:07,872 - WARNING -  * Debugger is active!
+2025-06-19 23:11:07,881 - INFO -  * Debugger PIN: 775-646-217
+2025-06-19 23:11:08,232 - INFO - File saved to ./timeMedia\d07df855-a741-442f-9e62-6a1a29d2f4a8.mp4
+2025-06-19 23:11:08,265 - ERROR - An error occurred during file upload
+Traceback (most recent call last):
+  File "C:\Users\maksi\PycharmProjects\asterica\server.py", line 111, in upload_file
+    crop_video(file.filename, aspect_ratio, center)
+  File "C:\Users\maksi\PycharmProjects\asterica\utils\videoEditor.py", line 4, in crop_video
+    clip = VideoFileClip(f'/timeMedia/{name}')
+  File "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python39_64\lib\site-packages\moviepy\video\io\VideoFileClip.py", line 88, in __init__
+    self.reader = FFMPEG_VideoReader(filename, pix_fmt=pix_fmt,
+  File "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python39_64\lib\site-packages\moviepy\video\io\ffmpeg_reader.py", line 35, in __init__
+    infos = ffmpeg_parse_infos(filename, print_infos, check_duration,
+  File "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python39_64\lib\site-packages\moviepy\video\io\ffmpeg_reader.py", line 270, in ffmpeg_parse_infos
+    raise IOError(("MoviePy error: the file %s could not be found!\n"
+OSError: MoviePy error: the file /timeMedia/d07df855-a741-442f-9e62-6a1a29d2f4a8.mp4 could not be found!
+Please check that you entered the correct path.
+2025-06-19 23:11:08,268 - INFO - 127.0.0.1 - - [19/Jun/2025 23:11:08] "[35m[1mPOST /upload_file HTTP/1.1[0m" 500 -
+2025-06-19 23:11:52,264 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.4:5000
+2025-06-19 23:11:52,264 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-19 23:11:52,266 - INFO -  * Restarting with stat
+2025-06-19 23:11:55,567 - WARNING -  * Debugger is active!
+2025-06-19 23:11:55,575 - INFO -  * Debugger PIN: 775-646-217
+2025-06-19 23:11:55,682 - INFO - File saved to ./timeMedia\d07df855-a741-442f-9e62-6a1a29d2f4a8.mp4
+2025-06-19 23:11:55,715 - ERROR - An error occurred during file upload
+Traceback (most recent call last):
+  File "C:\Users\maksi\PycharmProjects\asterica\server.py", line 111, in upload_file
+    crop_video(file.filename, aspect_ratio, center)
+  File "C:\Users\maksi\PycharmProjects\asterica\utils\videoEditor.py", line 4, in crop_video
+    clip = VideoFileClip(f'../timeMedia/{name}')
+  File "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python39_64\lib\site-packages\moviepy\video\io\VideoFileClip.py", line 88, in __init__
+    self.reader = FFMPEG_VideoReader(filename, pix_fmt=pix_fmt,
+  File "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python39_64\lib\site-packages\moviepy\video\io\ffmpeg_reader.py", line 35, in __init__
+    infos = ffmpeg_parse_infos(filename, print_infos, check_duration,
+  File "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python39_64\lib\site-packages\moviepy\video\io\ffmpeg_reader.py", line 270, in ffmpeg_parse_infos
+    raise IOError(("MoviePy error: the file %s could not be found!\n"
+OSError: MoviePy error: the file ../timeMedia/d07df855-a741-442f-9e62-6a1a29d2f4a8.mp4 could not be found!
+Please check that you entered the correct path.
+2025-06-19 23:11:55,718 - INFO - 127.0.0.1 - - [19/Jun/2025 23:11:55] "[35m[1mPOST /upload_file HTTP/1.1[0m" 500 -
+2025-06-19 23:13:39,597 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.4:5000
+2025-06-19 23:13:39,597 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-19 23:13:39,599 - INFO -  * Restarting with stat
+2025-06-19 23:13:42,921 - WARNING -  * Debugger is active!
+2025-06-19 23:13:42,931 - INFO -  * Debugger PIN: 775-646-217
+2025-06-19 23:13:43,053 - INFO - File saved to ./timeMedia\d07df855-a741-442f-9e62-6a1a29d2f4a8.mp4
+2025-06-19 23:13:44,339 - ERROR - An error occurred during file upload
+Traceback (most recent call last):
+  File "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python39_64\lib\site-packages\moviepy\video\io\ffmpeg_writer.py", line 136, in write_frame
+    self.proc.stdin.write(img_array.tobytes())
+BrokenPipeError: [Errno 32] Broken pipe
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\maksi\PycharmProjects\asterica\server.py", line 111, in upload_file
+    crop_video(file.filename, aspect_ratio, center)
+  File "C:\Users\maksi\PycharmProjects\asterica\utils\videoEditor.py", line 43, in crop_video
+    cropped_clip.write_videofile(
+  File "<decorator-gen-55>", line 2, in write_videofile
+  File "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python39_64\lib\site-packages\moviepy\decorators.py", line 54, in requires_duration
+    return f(clip, *a, **k)
+  File "<decorator-gen-54>", line 2, in write_videofile
+  File "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python39_64\lib\site-packages\moviepy\decorators.py", line 135, in use_clip_fps_by_default
+    return f(clip, *new_a, **new_kw)
+  File "<decorator-gen-53>", line 2, in write_videofile
+  File "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python39_64\lib\site-packages\moviepy\decorators.py", line 22, in convert_masks_to_RGB
+    return f(clip, *a, **k)
+  File "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python39_64\lib\site-packages\moviepy\video\VideoClip.py", line 300, in write_videofile
+    ffmpeg_write_video(self, filename, fps, codec,
+  File "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python39_64\lib\site-packages\moviepy\video\io\ffmpeg_writer.py", line 228, in ffmpeg_write_video
+    writer.write_frame(frame)
+  File "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python39_64\lib\site-packages\moviepy\video\io\ffmpeg_writer.py", line 180, in write_frame
+    raise IOError(error)
+OSError: [Errno 32] Broken pipe
+
+MoviePy error: FFMPEG encountered the following error while writing file ../timeMedia/update_d07df855-a741-442f-9e62-6a1a29d2f4a8.mp4:
+
+ b'[out#0/mp4 @ 0000023482e75e80] Error opening output ../timeMedia/update_d07df855-a741-442f-9e62-6a1a29d2f4a8.mp4: No such file or directory\r\nError opening output file ../timeMedia/update_d07df855-a741-442f-9e62-6a1a29d2f4a8.mp4.\r\nError opening output files: No such file or directory\r\n'
+2025-06-19 23:13:44,342 - INFO - 127.0.0.1 - - [19/Jun/2025 23:13:44] "[35m[1mPOST /upload_file HTTP/1.1[0m" 500 -
+2025-06-19 23:13:58,516 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.4:5000
+2025-06-19 23:13:58,516 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-19 23:13:58,518 - INFO -  * Restarting with stat
+2025-06-19 23:14:01,726 - WARNING -  * Debugger is active!
+2025-06-19 23:14:01,735 - INFO -  * Debugger PIN: 775-646-217
+2025-06-19 23:14:06,001 - INFO - File saved to ./timeMedia\d07df855-a741-442f-9e62-6a1a29d2f4a8.mp4
+2025-06-19 23:14:09,893 - INFO - File uploaded and cropped successfully: d07df855-a741-442f-9e62-6a1a29d2f4a8.mp4
+2025-06-19 23:14:09,905 - INFO - 127.0.0.1 - - [19/Jun/2025 23:14:09] "POST /upload_file HTTP/1.1" 200 -
+2025-06-19 23:15:30,299 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.4:5000
+2025-06-19 23:15:30,300 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-19 23:15:30,302 - INFO -  * Restarting with stat
+2025-06-19 23:15:33,547 - WARNING -  * Debugger is active!
+2025-06-19 23:15:33,556 - INFO -  * Debugger PIN: 775-646-217
+2025-06-19 23:15:42,148 - INFO - File saved to ./timeMedia\d07df855-a741-442f-9e62-6a1a29d2f4a8.mp4
+2025-06-19 23:15:46,142 - INFO - File uploaded and cropped successfully: d07df855-a741-442f-9e62-6a1a29d2f4a8.mp4
+2025-06-19 23:15:46,145 - INFO - 127.0.0.1 - - [19/Jun/2025 23:15:46] "POST /upload_file HTTP/1.1" 200 -
+2025-06-19 23:16:49,074 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.4:5000
+2025-06-19 23:16:49,074 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-19 23:16:49,079 - INFO -  * Restarting with stat
+2025-06-19 23:16:52,300 - WARNING -  * Debugger is active!
+2025-06-19 23:16:52,309 - INFO -  * Debugger PIN: 775-646-217
+2025-06-19 23:16:52,943 - INFO - File saved to ./timeMedia\d07df855-a741-442f-9e62-6a1a29d2f4a8.mp4
+2025-06-19 23:16:57,442 - INFO - File uploaded and cropped successfully: d07df855-a741-442f-9e62-6a1a29d2f4a8.mp4
+2025-06-19 23:16:57,444 - INFO - 127.0.0.1 - - [19/Jun/2025 23:16:57] "POST /upload_file HTTP/1.1" 200 -
+2025-06-19 23:17:46,344 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.4:5000
+2025-06-19 23:17:46,344 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-19 23:17:46,348 - INFO -  * Restarting with stat
+2025-06-19 23:17:49,639 - WARNING -  * Debugger is active!
+2025-06-19 23:17:49,648 - INFO -  * Debugger PIN: 775-646-217
+2025-06-19 23:17:49,760 - INFO - File saved to ./timeMedia\d07df855-a741-442f-9e62-6a1a29d2f4a8.mp4
+2025-06-19 23:17:52,643 - ERROR - An error occurred during file upload
+Traceback (most recent call last):
+  File "C:\Users\maksi\AppData\Roaming\Python\Python39\site-packages\aiohttp\client_reqrep.py", line 658, in write_bytes
+    await self.body.write(writer)
+  File "C:\Users\maksi\AppData\Roaming\Python\Python39\site-packages\aiohttp\multipart.py", line 1008, in write
+    await part.write(writer)
+  File "C:\Users\maksi\AppData\Roaming\Python\Python39\site-packages\aiohttp\payload.py", line 494, in write
+    chunk = await self._iter.__anext__()
+  File "C:\Users\maksi\AppData\Roaming\Python\Python39\site-packages\aiogram\types\input_file.py", line 103, in read
+    async with aiofiles.open(self.path, "rb") as f:
+  File "C:\Users\maksi\AppData\Roaming\Python\Python39\site-packages\aiofiles\base.py", line 63, in __aenter__
+    return await self
+  File "C:\Users\maksi\AppData\Roaming\Python\Python39\site-packages\aiofiles\base.py", line 59, in __await__
+    self._obj = yield from self._coro.__await__()
+  File "C:\Users\maksi\AppData\Roaming\Python\Python39\site-packages\aiofiles\threadpool\__init__.py", line 92, in _open
+    f = await loop.run_in_executor(executor, cb)
+  File "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python39_64\lib\concurrent\futures\thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+FileNotFoundError: [Errno 2] No such file or directory: '/timeMedia/update_d07df855-a741-442f-9e62-6a1a29d2f4a8.mp4'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\maksi\AppData\Roaming\Python\Python39\site-packages\aiogram\client\session\aiohttp.py", line 177, in make_request
+    async with session.post(
+  File "C:\Users\maksi\AppData\Roaming\Python\Python39\site-packages\aiohttp\client.py", line 1425, in __aenter__
+    self._resp: _RetType = await self._coro
+  File "C:\Users\maksi\AppData\Roaming\Python\Python39\site-packages\aiohttp\client.py", line 730, in _request
+    await resp.start(conn)
+  File "C:\Users\maksi\AppData\Roaming\Python\Python39\site-packages\aiohttp\client_reqrep.py", line 1059, in start
+    message, payload = await protocol.read()  # type: ignore[union-attr]
+  File "C:\Users\maksi\AppData\Roaming\Python\Python39\site-packages\aiohttp\streams.py", line 672, in read
+    await self._waiter
+aiohttp.client_exceptions.ClientOSError: [Errno 2] Can not write request body for https://api.telegram.org/bot7787730759:AAFWd0QAjLHlv0fmfyakHuC3pc2sBe4vRU0/sendVideoNote
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\maksi\PycharmProjects\asterica\server.py", line 114, in upload_file
+    loop.run_until_complete(sendVideoToUser(id=user[0][0] , name=f"update_{file.filename}"))
+  File "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python39_64\lib\asyncio\base_events.py", line 647, in run_until_complete
+    return future.result()
+  File "C:\Users\maksi\PycharmProjects\asterica\user\sendCircleToUser.py", line 6, in sendVideoToUser
+    await bot.send_video_note(id, FSInputFile(f"/timeMedia/{name}"))
+  File "C:\Users\maksi\AppData\Roaming\Python\Python39\site-packages\aiogram\client\bot.py", line 3429, in send_video_note
+    return await self(call, request_timeout=request_timeout)
+  File "C:\Users\maksi\AppData\Roaming\Python\Python39\site-packages\aiogram\client\bot.py", line 498, in __call__
+    return await self.session(self, method, timeout=request_timeout)
+  File "C:\Users\maksi\AppData\Roaming\Python\Python39\site-packages\aiogram\client\session\base.py", line 254, in __call__
+    return cast(TelegramType, await middleware(bot, method))
+  File "C:\Users\maksi\AppData\Roaming\Python\Python39\site-packages\aiogram\client\session\aiohttp.py", line 184, in make_request
+    raise TelegramNetworkError(method=method, message=f"{type(e).__name__}: {e}")
+aiogram.exceptions.TelegramNetworkError: HTTP Client says - ClientOSError: [Errno 2] Can not write request body for https://api.telegram.org/bot7787730759:AAFWd0QAjLHlv0fmfyakHuC3pc2sBe4vRU0/sendVideoNote
+2025-06-19 23:17:52,839 - INFO - 127.0.0.1 - - [19/Jun/2025 23:17:52] "[35m[1mPOST /upload_file HTTP/1.1[0m" 500 -
+2025-06-19 23:18:29,529 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.4:5000
+2025-06-19 23:18:29,530 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-19 23:18:29,532 - INFO -  * Restarting with stat
+2025-06-19 23:18:34,376 - WARNING -  * Debugger is active!
+2025-06-19 23:18:34,386 - INFO -  * Debugger PIN: 775-646-217
+2025-06-19 23:18:36,735 - INFO - File saved to ./timeMedia\d07df855-a741-442f-9e62-6a1a29d2f4a8.mp4
+2025-06-19 23:18:40,091 - ERROR - An error occurred during file upload
+Traceback (most recent call last):
+  File "C:\Users\maksi\AppData\Roaming\Python\Python39\site-packages\aiohttp\client_reqrep.py", line 658, in write_bytes
+    await self.body.write(writer)
+  File "C:\Users\maksi\AppData\Roaming\Python\Python39\site-packages\aiohttp\multipart.py", line 1008, in write
+    await part.write(writer)
+  File "C:\Users\maksi\AppData\Roaming\Python\Python39\site-packages\aiohttp\payload.py", line 494, in write
+    chunk = await self._iter.__anext__()
+  File "C:\Users\maksi\AppData\Roaming\Python\Python39\site-packages\aiogram\types\input_file.py", line 103, in read
+    async with aiofiles.open(self.path, "rb") as f:
+  File "C:\Users\maksi\AppData\Roaming\Python\Python39\site-packages\aiofiles\base.py", line 63, in __aenter__
+    return await self
+  File "C:\Users\maksi\AppData\Roaming\Python\Python39\site-packages\aiofiles\base.py", line 59, in __await__
+    self._obj = yield from self._coro.__await__()
+  File "C:\Users\maksi\AppData\Roaming\Python\Python39\site-packages\aiofiles\threadpool\__init__.py", line 92, in _open
+    f = await loop.run_in_executor(executor, cb)
+  File "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python39_64\lib\concurrent\futures\thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+FileNotFoundError: [Errno 2] No such file or directory: '/timeMedia/update_d07df855-a741-442f-9e62-6a1a29d2f4a8.mp4'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\maksi\AppData\Roaming\Python\Python39\site-packages\aiogram\client\session\aiohttp.py", line 177, in make_request
+    async with session.post(
+  File "C:\Users\maksi\AppData\Roaming\Python\Python39\site-packages\aiohttp\client.py", line 1425, in __aenter__
+    self._resp: _RetType = await self._coro
+  File "C:\Users\maksi\AppData\Roaming\Python\Python39\site-packages\aiohttp\client.py", line 730, in _request
+    await resp.start(conn)
+  File "C:\Users\maksi\AppData\Roaming\Python\Python39\site-packages\aiohttp\client_reqrep.py", line 1059, in start
+    message, payload = await protocol.read()  # type: ignore[union-attr]
+  File "C:\Users\maksi\AppData\Roaming\Python\Python39\site-packages\aiohttp\streams.py", line 672, in read
+    await self._waiter
+aiohttp.client_exceptions.ClientOSError: [Errno 2] Can not write request body for https://api.telegram.org/bot7787730759:AAFWd0QAjLHlv0fmfyakHuC3pc2sBe4vRU0/sendVideoNote
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\maksi\PycharmProjects\asterica\server.py", line 114, in upload_file
+    datas = loop.run_until_complete(sendVideoToUser(id=user[0][0] , name=f"update_{file.filename}"))
+  File "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python39_64\lib\asyncio\base_events.py", line 647, in run_until_complete
+    return future.result()
+  File "C:\Users\maksi\PycharmProjects\asterica\user\sendCircleToUser.py", line 6, in sendVideoToUser
+    await bot.send_video_note(id, FSInputFile(f"/timeMedia/{name}"))
+  File "C:\Users\maksi\AppData\Roaming\Python\Python39\site-packages\aiogram\client\bot.py", line 3429, in send_video_note
+    return await self(call, request_timeout=request_timeout)
+  File "C:\Users\maksi\AppData\Roaming\Python\Python39\site-packages\aiogram\client\bot.py", line 498, in __call__
+    return await self.session(self, method, timeout=request_timeout)
+  File "C:\Users\maksi\AppData\Roaming\Python\Python39\site-packages\aiogram\client\session\base.py", line 254, in __call__
+    return cast(TelegramType, await middleware(bot, method))
+  File "C:\Users\maksi\AppData\Roaming\Python\Python39\site-packages\aiogram\client\session\aiohttp.py", line 184, in make_request
+    raise TelegramNetworkError(method=method, message=f"{type(e).__name__}: {e}")
+aiogram.exceptions.TelegramNetworkError: HTTP Client says - ClientOSError: [Errno 2] Can not write request body for https://api.telegram.org/bot7787730759:AAFWd0QAjLHlv0fmfyakHuC3pc2sBe4vRU0/sendVideoNote
+2025-06-19 23:18:40,100 - INFO - 127.0.0.1 - - [19/Jun/2025 23:18:40] "[35m[1mPOST /upload_file HTTP/1.1[0m" 500 -
+2025-06-19 23:19:16,537 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.4:5000
+2025-06-19 23:19:16,538 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-19 23:19:16,539 - INFO -  * Restarting with stat
+2025-06-19 23:19:19,886 - WARNING -  * Debugger is active!
+2025-06-19 23:19:19,895 - INFO -  * Debugger PIN: 775-646-217
+2025-06-19 23:19:21,843 - INFO - File saved to ./timeMedia\d07df855-a741-442f-9e62-6a1a29d2f4a8.mp4
+2025-06-19 23:19:25,248 - ERROR - An error occurred during file upload
+Traceback (most recent call last):
+  File "C:\Users\maksi\AppData\Roaming\Python\Python39\site-packages\aiohttp\client_reqrep.py", line 658, in write_bytes
+    await self.body.write(writer)
+  File "C:\Users\maksi\AppData\Roaming\Python\Python39\site-packages\aiohttp\multipart.py", line 1008, in write
+    await part.write(writer)
+  File "C:\Users\maksi\AppData\Roaming\Python\Python39\site-packages\aiohttp\payload.py", line 494, in write
+    chunk = await self._iter.__anext__()
+  File "C:\Users\maksi\AppData\Roaming\Python\Python39\site-packages\aiogram\types\input_file.py", line 103, in read
+    async with aiofiles.open(self.path, "rb") as f:
+  File "C:\Users\maksi\AppData\Roaming\Python\Python39\site-packages\aiofiles\base.py", line 63, in __aenter__
+    return await self
+  File "C:\Users\maksi\AppData\Roaming\Python\Python39\site-packages\aiofiles\base.py", line 59, in __await__
+    self._obj = yield from self._coro.__await__()
+  File "C:\Users\maksi\AppData\Roaming\Python\Python39\site-packages\aiofiles\threadpool\__init__.py", line 92, in _open
+    f = await loop.run_in_executor(executor, cb)
+  File "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python39_64\lib\concurrent\futures\thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+FileNotFoundError: [Errno 2] No such file or directory: '/timeMedia/update_d07df855-a741-442f-9e62-6a1a29d2f4a8.mp4'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\maksi\AppData\Roaming\Python\Python39\site-packages\aiogram\client\session\aiohttp.py", line 177, in make_request
+    async with session.post(
+  File "C:\Users\maksi\AppData\Roaming\Python\Python39\site-packages\aiohttp\client.py", line 1425, in __aenter__
+    self._resp: _RetType = await self._coro
+  File "C:\Users\maksi\AppData\Roaming\Python\Python39\site-packages\aiohttp\client.py", line 730, in _request
+    await resp.start(conn)
+  File "C:\Users\maksi\AppData\Roaming\Python\Python39\site-packages\aiohttp\client_reqrep.py", line 1059, in start
+    message, payload = await protocol.read()  # type: ignore[union-attr]
+  File "C:\Users\maksi\AppData\Roaming\Python\Python39\site-packages\aiohttp\streams.py", line 672, in read
+    await self._waiter
+aiohttp.client_exceptions.ClientOSError: [Errno 2] Can not write request body for https://api.telegram.org/bot7787730759:AAFWd0QAjLHlv0fmfyakHuC3pc2sBe4vRU0/sendVideoNote
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\maksi\PycharmProjects\asterica\server.py", line 114, in upload_file
+    datas = loop.run_until_complete(sendVideoToUser(id=user[0][0] , name=f"update_{file.filename}"))
+  File "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python39_64\lib\asyncio\base_events.py", line 647, in run_until_complete
+    return future.result()
+  File "C:\Users\maksi\PycharmProjects\asterica\user\sendCircleToUser.py", line 6, in sendVideoToUser
+    await bot.send_video_note(id, FSInputFile(f"/timeMedia/{name}"))
+  File "C:\Users\maksi\AppData\Roaming\Python\Python39\site-packages\aiogram\client\bot.py", line 3429, in send_video_note
+    return await self(call, request_timeout=request_timeout)
+  File "C:\Users\maksi\AppData\Roaming\Python\Python39\site-packages\aiogram\client\bot.py", line 498, in __call__
+    return await self.session(self, method, timeout=request_timeout)
+  File "C:\Users\maksi\AppData\Roaming\Python\Python39\site-packages\aiogram\client\session\base.py", line 254, in __call__
+    return cast(TelegramType, await middleware(bot, method))
+  File "C:\Users\maksi\AppData\Roaming\Python\Python39\site-packages\aiogram\client\session\aiohttp.py", line 184, in make_request
+    raise TelegramNetworkError(method=method, message=f"{type(e).__name__}: {e}")
+aiogram.exceptions.TelegramNetworkError: HTTP Client says - ClientOSError: [Errno 2] Can not write request body for https://api.telegram.org/bot7787730759:AAFWd0QAjLHlv0fmfyakHuC3pc2sBe4vRU0/sendVideoNote
+2025-06-19 23:19:25,256 - INFO - 127.0.0.1 - - [19/Jun/2025 23:19:25] "[35m[1mPOST /upload_file HTTP/1.1[0m" 500 -
+2025-06-19 23:19:45,733 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.4:5000
+2025-06-19 23:19:45,733 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-19 23:19:45,735 - INFO -  * Restarting with stat
+2025-06-19 23:19:48,893 - WARNING -  * Debugger is active!
+2025-06-19 23:19:48,902 - INFO -  * Debugger PIN: 775-646-217
+2025-06-19 23:21:45,915 - INFO - File saved to ./timeMedia\d07df855-a741-442f-9e62-6a1a29d2f4a8.mp4
+2025-06-19 23:21:49,042 - ERROR - An error occurred during file upload
+Traceback (most recent call last):
+  File "C:\Users\maksi\AppData\Roaming\Python\Python39\site-packages\aiohttp\client_reqrep.py", line 658, in write_bytes
+    await self.body.write(writer)
+  File "C:\Users\maksi\AppData\Roaming\Python\Python39\site-packages\aiohttp\multipart.py", line 1008, in write
+    await part.write(writer)
+  File "C:\Users\maksi\AppData\Roaming\Python\Python39\site-packages\aiohttp\payload.py", line 494, in write
+    chunk = await self._iter.__anext__()
+  File "C:\Users\maksi\AppData\Roaming\Python\Python39\site-packages\aiogram\types\input_file.py", line 103, in read
+    async with aiofiles.open(self.path, "rb") as f:
+  File "C:\Users\maksi\AppData\Roaming\Python\Python39\site-packages\aiofiles\base.py", line 63, in __aenter__
+    return await self
+  File "C:\Users\maksi\AppData\Roaming\Python\Python39\site-packages\aiofiles\base.py", line 59, in __await__
+    self._obj = yield from self._coro.__await__()
+  File "C:\Users\maksi\AppData\Roaming\Python\Python39\site-packages\aiofiles\threadpool\__init__.py", line 92, in _open
+    f = await loop.run_in_executor(executor, cb)
+  File "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python39_64\lib\concurrent\futures\thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+FileNotFoundError: [Errno 2] No such file or directory: '/timeMedia/update_d07df855-a741-442f-9e62-6a1a29d2f4a8.mp4'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\maksi\AppData\Roaming\Python\Python39\site-packages\aiogram\client\session\aiohttp.py", line 177, in make_request
+    async with session.post(
+  File "C:\Users\maksi\AppData\Roaming\Python\Python39\site-packages\aiohttp\client.py", line 1425, in __aenter__
+    self._resp: _RetType = await self._coro
+  File "C:\Users\maksi\AppData\Roaming\Python\Python39\site-packages\aiohttp\client.py", line 730, in _request
+    await resp.start(conn)
+  File "C:\Users\maksi\AppData\Roaming\Python\Python39\site-packages\aiohttp\client_reqrep.py", line 1059, in start
+    message, payload = await protocol.read()  # type: ignore[union-attr]
+  File "C:\Users\maksi\AppData\Roaming\Python\Python39\site-packages\aiohttp\streams.py", line 672, in read
+    await self._waiter
+aiohttp.client_exceptions.ClientOSError: [Errno 2] Can not write request body for https://api.telegram.org/bot7787730759:AAFWd0QAjLHlv0fmfyakHuC3pc2sBe4vRU0/sendVideoNote
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\maksi\PycharmProjects\asterica\server.py", line 114, in upload_file
+    datas = loop.run_until_complete(sendVideoToUser(id=user[0][0] , name=f"update_{file.filename}"))
+  File "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python39_64\lib\asyncio\base_events.py", line 647, in run_until_complete
+    return future.result()
+  File "C:\Users\maksi\PycharmProjects\asterica\user\sendCircleToUser.py", line 6, in sendVideoToUser
+    await bot.send_video_note(id, FSInputFile(f"/timeMedia/{name}"))
+  File "C:\Users\maksi\AppData\Roaming\Python\Python39\site-packages\aiogram\client\bot.py", line 3429, in send_video_note
+    return await self(call, request_timeout=request_timeout)
+  File "C:\Users\maksi\AppData\Roaming\Python\Python39\site-packages\aiogram\client\bot.py", line 498, in __call__
+    return await self.session(self, method, timeout=request_timeout)
+  File "C:\Users\maksi\AppData\Roaming\Python\Python39\site-packages\aiogram\client\session\base.py", line 254, in __call__
+    return cast(TelegramType, await middleware(bot, method))
+  File "C:\Users\maksi\AppData\Roaming\Python\Python39\site-packages\aiogram\client\session\aiohttp.py", line 184, in make_request
+    raise TelegramNetworkError(method=method, message=f"{type(e).__name__}: {e}")
+aiogram.exceptions.TelegramNetworkError: HTTP Client says - ClientOSError: [Errno 2] Can not write request body for https://api.telegram.org/bot7787730759:AAFWd0QAjLHlv0fmfyakHuC3pc2sBe4vRU0/sendVideoNote
+2025-06-19 23:21:49,049 - INFO - 127.0.0.1 - - [19/Jun/2025 23:21:49] "[35m[1mPOST /upload_file HTTP/1.1[0m" 500 -
+2025-06-19 23:22:05,978 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.4:5000
+2025-06-19 23:22:05,978 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-19 23:22:05,980 - INFO -  * Restarting with stat
+2025-06-19 23:22:09,246 - WARNING -  * Debugger is active!
+2025-06-19 23:22:09,255 - INFO -  * Debugger PIN: 775-646-217
+2025-06-19 23:22:09,366 - INFO - File saved to ./timeMedia\d07df855-a741-442f-9e62-6a1a29d2f4a8.mp4
+2025-06-19 23:22:12,255 - ERROR - An error occurred during file upload
+Traceback (most recent call last):
+  File "C:\Users\maksi\AppData\Roaming\Python\Python39\site-packages\aiohttp\client_reqrep.py", line 658, in write_bytes
+    await self.body.write(writer)
+  File "C:\Users\maksi\AppData\Roaming\Python\Python39\site-packages\aiohttp\multipart.py", line 1008, in write
+    await part.write(writer)
+  File "C:\Users\maksi\AppData\Roaming\Python\Python39\site-packages\aiohttp\payload.py", line 494, in write
+    chunk = await self._iter.__anext__()
+  File "C:\Users\maksi\AppData\Roaming\Python\Python39\site-packages\aiogram\types\input_file.py", line 103, in read
+    async with aiofiles.open(self.path, "rb") as f:
+  File "C:\Users\maksi\AppData\Roaming\Python\Python39\site-packages\aiofiles\base.py", line 63, in __aenter__
+    return await self
+  File "C:\Users\maksi\AppData\Roaming\Python\Python39\site-packages\aiofiles\base.py", line 59, in __await__
+    self._obj = yield from self._coro.__await__()
+  File "C:\Users\maksi\AppData\Roaming\Python\Python39\site-packages\aiofiles\threadpool\__init__.py", line 92, in _open
+    f = await loop.run_in_executor(executor, cb)
+  File "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python39_64\lib\concurrent\futures\thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+FileNotFoundError: [Errno 2] No such file or directory: '/timeMedia/update_d07df855-a741-442f-9e62-6a1a29d2f4a8.mp4'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\maksi\AppData\Roaming\Python\Python39\site-packages\aiogram\client\session\aiohttp.py", line 177, in make_request
+    async with session.post(
+  File "C:\Users\maksi\AppData\Roaming\Python\Python39\site-packages\aiohttp\client.py", line 1425, in __aenter__
+    self._resp: _RetType = await self._coro
+  File "C:\Users\maksi\AppData\Roaming\Python\Python39\site-packages\aiohttp\client.py", line 730, in _request
+    await resp.start(conn)
+  File "C:\Users\maksi\AppData\Roaming\Python\Python39\site-packages\aiohttp\client_reqrep.py", line 1059, in start
+    message, payload = await protocol.read()  # type: ignore[union-attr]
+  File "C:\Users\maksi\AppData\Roaming\Python\Python39\site-packages\aiohttp\streams.py", line 672, in read
+    await self._waiter
+aiohttp.client_exceptions.ClientOSError: [Errno 2] Can not write request body for https://api.telegram.org/bot7787730759:AAFWd0QAjLHlv0fmfyakHuC3pc2sBe4vRU0/sendVideoNote
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\maksi\PycharmProjects\asterica\server.py", line 114, in upload_file
+    loop.run_until_complete(sendVideoToUser(id=user[0][0] , name=f"update_{file.filename}"))
+  File "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python39_64\lib\asyncio\base_events.py", line 647, in run_until_complete
+    return future.result()
+  File "C:\Users\maksi\PycharmProjects\asterica\user\sendCircleToUser.py", line 6, in sendVideoToUser
+    await bot.send_video_note(id, FSInputFile(f"/timeMedia/{name}"))
+  File "C:\Users\maksi\AppData\Roaming\Python\Python39\site-packages\aiogram\client\bot.py", line 3429, in send_video_note
+    return await self(call, request_timeout=request_timeout)
+  File "C:\Users\maksi\AppData\Roaming\Python\Python39\site-packages\aiogram\client\bot.py", line 498, in __call__
+    return await self.session(self, method, timeout=request_timeout)
+  File "C:\Users\maksi\AppData\Roaming\Python\Python39\site-packages\aiogram\client\session\base.py", line 254, in __call__
+    return cast(TelegramType, await middleware(bot, method))
+  File "C:\Users\maksi\AppData\Roaming\Python\Python39\site-packages\aiogram\client\session\aiohttp.py", line 184, in make_request
+    raise TelegramNetworkError(method=method, message=f"{type(e).__name__}: {e}")
+aiogram.exceptions.TelegramNetworkError: HTTP Client says - ClientOSError: [Errno 2] Can not write request body for https://api.telegram.org/bot7787730759:AAFWd0QAjLHlv0fmfyakHuC3pc2sBe4vRU0/sendVideoNote
+2025-06-19 23:22:12,267 - INFO - 127.0.0.1 - - [19/Jun/2025 23:22:12] "[35m[1mPOST /upload_file HTTP/1.1[0m" 500 -
+2025-06-19 23:22:32,751 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.4:5000
+2025-06-19 23:22:32,751 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-19 23:22:32,753 - INFO -  * Restarting with stat
+2025-06-19 23:22:36,081 - WARNING -  * Debugger is active!
+2025-06-19 23:22:36,091 - INFO -  * Debugger PIN: 775-646-217
+2025-06-19 23:22:41,376 - INFO - File saved to ./timeMedia\d07df855-a741-442f-9e62-6a1a29d2f4a8.mp4
+2025-06-19 23:22:45,107 - INFO - File uploaded and cropped successfully: d07df855-a741-442f-9e62-6a1a29d2f4a8.mp4
+2025-06-19 23:22:45,108 - INFO - 127.0.0.1 - - [19/Jun/2025 23:22:45] "POST /upload_file HTTP/1.1" 200 -
+2025-06-19 23:23:01,885 - INFO -  * Detected change in 'C:\\Users\\maksi\\PycharmProjects\\asterica\\server.py', reloading
+2025-06-19 23:23:02,189 - INFO -  * Restarting with stat
+2025-06-19 23:23:05,359 - WARNING -  * Debugger is active!
+2025-06-19 23:23:05,368 - INFO -  * Debugger PIN: 775-646-217
+2025-06-19 23:23:06,219 - INFO - File saved to ./timeMedia\d07df855-a741-442f-9e62-6a1a29d2f4a8.mp4
+2025-06-19 23:23:10,162 - ERROR - An error occurred during file upload
+Traceback (most recent call last):
+  File "C:\Users\maksi\PycharmProjects\asterica\server.py", line 119, in upload_file
+    os.remove(f'/timeMedia/update_{file.filename}')
+FileNotFoundError: [WinError 2] Не удается найти указанный файл: '/timeMedia/update_d07df855-a741-442f-9e62-6a1a29d2f4a8.mp4'
+2025-06-19 23:23:10,165 - INFO - 127.0.0.1 - - [19/Jun/2025 23:23:10] "[35m[1mPOST /upload_file HTTP/1.1[0m" 500 -
+2025-06-19 23:23:49,899 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.4:5000
+2025-06-19 23:23:49,900 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-19 23:23:49,902 - INFO -  * Restarting with stat
+2025-06-19 23:23:52,958 - WARNING -  * Debugger is active!
+2025-06-19 23:23:52,966 - INFO -  * Debugger PIN: 775-646-217
+2025-06-19 23:23:53,075 - INFO - File saved to ./timeMedia\d07df855-a741-442f-9e62-6a1a29d2f4a8.mp4
+2025-06-19 23:23:56,995 - INFO - File uploaded and cropped successfully: d07df855-a741-442f-9e62-6a1a29d2f4a8.mp4
+2025-06-19 23:23:56,996 - INFO - 127.0.0.1 - - [19/Jun/2025 23:23:56] "POST /upload_file HTTP/1.1" 200 -

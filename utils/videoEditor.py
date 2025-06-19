@@ -1,13 +1,13 @@
 import os
 from moviepy.editor import *
-async def crop_video(name, target_aspect_ratio, center):
-    clip = VideoFileClip(f'../timeMedia/{name}')
+def crop_video(name, target_aspect_ratio, center):
+    clip = VideoFileClip(f'./timeMedia/{name}')
     w, h = clip.size
     current_aspect = w / h
 
     if abs(current_aspect - target_aspect_ratio) < 1e-3:
         # Aspect ratios match, no crop needed, just write the file
-        clip.write_videofile(f'../timeMedia/{name}', codec='libx264', audio_codec='aac')
+        clip.write_videofile(f'./timeMedia/{name}', codec='libx264', audio_codec='aac')
         clip.close()
         return
 
@@ -41,7 +41,7 @@ async def crop_video(name, target_aspect_ratio, center):
     cropped_clip = clip.crop(x1=x1, y1=y1, x2=x2, y2=y2)
 
     cropped_clip.write_videofile(
-        f"../timeMedia/update_{name}",
+        f"./timeMedia/update_{name}",
         codec="libx264",
 
         audio_codec="aac" ,
@@ -55,7 +55,7 @@ async def crop_video(name, target_aspect_ratio, center):
             "-pix_fmt", "yuv420p", "-movflags", "+faststart"
         ]
     )
-    os.remove(f"../timeMedia/{name}")
+
     clip.close()
     cropped_clip.close()
 

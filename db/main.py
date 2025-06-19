@@ -24,21 +24,21 @@ def addNewOrder(name, age, comment, telegramId, link):
                    [name, age, comment,telegramId, str(0), str(link) ])
     con.commit()
     cursor.close()
-async def getOrder(link):
+def getOrder(link):
     cursor = con.cursor()
     req = cursor.execute("""SELECT * FROM Orders WHERE Link = ? """, [link]).fetchall()
     cursor.close()
 
     return req
 
-async def getAllOrders():
+def getAllOrders():
     cursor = con.cursor()
     req = cursor.execute("""SELECT * FROM Orders """ ).fetchall()
     cursor.close()
     print(req)
 
     return req
-async def updateTaskState(uuid):
+def updateTaskState(uuid):
     cursor = con.cursor()
     req = cursor.execute("""UPDATE Orders SET Status = 1 WHERE Link = ? """,[uuid] )
     con.commit()
