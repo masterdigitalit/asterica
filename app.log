@@ -637,3 +637,347 @@ FileNotFoundError: [WinError 2] Не удается найти указанны�
 2025-06-19 23:23:53,075 - INFO - File saved to ./timeMedia\d07df855-a741-442f-9e62-6a1a29d2f4a8.mp4
 2025-06-19 23:23:56,995 - INFO - File uploaded and cropped successfully: d07df855-a741-442f-9e62-6a1a29d2f4a8.mp4
 2025-06-19 23:23:56,996 - INFO - 127.0.0.1 - - [19/Jun/2025 23:23:56] "POST /upload_file HTTP/1.1" 200 -
+2025-06-20 00:12:38,934 - INFO -  * Detected change in 'C:\\Users\\maksi\\PycharmProjects\\asterica\\utils\\videoEditor.py', reloading
+2025-06-20 00:12:39,395 - INFO -  * Restarting with stat
+2025-06-20 00:39:55,529 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.4:5000
+2025-06-20 00:39:55,529 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-20 00:39:55,531 - INFO -  * Restarting with stat
+2025-06-20 00:39:58,918 - WARNING -  * Debugger is active!
+2025-06-20 00:39:58,926 - INFO -  * Debugger PIN: 775-646-217
+2025-06-20 00:40:14,627 - INFO - File saved to ./timeMedia\6c7bef46-666b-42d2-89d9-675464c7c396.mp4
+2025-06-20 00:40:15,016 - ERROR - An error occurred during file upload
+Traceback (most recent call last):
+  File "C:\Users\maksi\PycharmProjects\asterica\server.py", line 111, in upload_file
+    crop_video(file.filename, aspect_ratio, center)
+  File "C:\Users\maksi\PycharmProjects\asterica\utils\videoEditor.py", line 39, in crop_video
+    cropped_clip = clip.size(x_center=x_center, y_center=y_center, width=new_width, height=new_height)
+TypeError: 'list' object is not callable
+2025-06-20 00:40:15,018 - INFO - 127.0.0.1 - - [20/Jun/2025 00:40:15] "[35m[1mPOST /upload_file HTTP/1.1[0m" 500 -
+2025-06-20 00:41:22,205 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.4:5000
+2025-06-20 00:41:22,206 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-20 00:41:22,207 - INFO -  * Restarting with stat
+2025-06-20 00:41:25,390 - WARNING -  * Debugger is active!
+2025-06-20 00:41:25,398 - INFO -  * Debugger PIN: 775-646-217
+2025-06-20 00:41:25,512 - INFO - File saved to ./timeMedia\6c7bef46-666b-42d2-89d9-675464c7c396.mp4
+2025-06-20 00:41:27,180 - ERROR - An error occurred during file upload
+Traceback (most recent call last):
+  File "C:\Users\maksi\AppData\Roaming\Python\Python39\site-packages\moviepy\video\io\ffmpeg_writer.py", line 169, in write_frame
+    self.proc.stdin.write(img_array.tobytes())
+BrokenPipeError: [Errno 32] Broken pipe
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\maksi\PycharmProjects\asterica\server.py", line 111, in upload_file
+    crop_video(file.filename, aspect_ratio, center)
+  File "C:\Users\maksi\PycharmProjects\asterica\utils\videoEditor.py", line 41, in crop_video
+    cropped_clip.write_videofile(
+  File "<decorator-gen-62>", line 2, in write_videofile
+  File "C:\Users\maksi\AppData\Roaming\Python\Python39\site-packages\moviepy\decorators.py", line 53, in requires_duration
+    return func(clip, *args, **kwargs)
+  File "<decorator-gen-61>", line 2, in write_videofile
+  File "C:\Users\maksi\AppData\Roaming\Python\Python39\site-packages\moviepy\decorators.py", line 153, in wrapper
+    return func(clip, *new_args, **new_kwargs)
+  File "<decorator-gen-60>", line 2, in write_videofile
+  File "C:\Users\maksi\AppData\Roaming\Python\Python39\site-packages\moviepy\decorators.py", line 24, in convert_masks_to_RGB
+    return func(clip, *args, **kwargs)
+  File "<decorator-gen-59>", line 2, in write_videofile
+  File "C:\Users\maksi\AppData\Roaming\Python\Python39\site-packages\moviepy\decorators.py", line 102, in wrapper
+    return func(*new_args, **new_kwargs)
+  File "C:\Users\maksi\AppData\Roaming\Python\Python39\site-packages\moviepy\video\VideoClip.py", line 393, in write_videofile
+    ffmpeg_write_video(
+  File "C:\Users\maksi\AppData\Roaming\Python\Python39\site-packages\moviepy\video\io\ffmpeg_writer.py", line 295, in ffmpeg_write_video
+    writer.write_frame(frame)
+  File "C:\Users\maksi\AppData\Roaming\Python\Python39\site-packages\moviepy\video\io\ffmpeg_writer.py", line 221, in write_frame
+    raise IOError(error)
+OSError: [Errno 32] Broken pipe
+
+MoviePy error: FFMPEG encountered the following error while writing file ./timeMedia/update_6c7bef46-666b-42d2-89d9-675464c7c396.mp4:
+
+ [libx264 @ 000002bcbfdc6840] width not divisible by 2 (235x412)
+[vost#0:0/libx264 @ 000002bcbfdc6440] Error while opening encoder - maybe incorrect parameters such as bit_rate, rate, width or height.
+[vf#0:0 @ 000002bcbfe01f00] Error sending frames to consumers: Generic error in an external library
+[vf#0:0 @ 000002bcbfe01f00] Task finished with error code: -542398533 (Generic error in an external library)
+[vf#0:0 @ 000002bcbfe01f00] Terminating thread with return code -542398533 (Generic error in an external library)
+[vost#0:0/libx264 @ 000002bcbfdc6440] Could not open encoder before EOF
+[vost#0:0/libx264 @ 000002bcbfdc6440] Task finished with error code: -22 (Invalid argument)
+[vost#0:0/libx264 @ 000002bcbfdc6440] Terminating thread with return code -22 (Invalid argument)
+[out#0/mp4 @ 000002bcbff88d00] Nothing was written into output file, because at least one of its streams received no packets.
+
+2025-06-20 00:41:27,183 - INFO - 127.0.0.1 - - [20/Jun/2025 00:41:27] "[35m[1mPOST /upload_file HTTP/1.1[0m" 500 -
+2025-06-20 00:42:58,490 - INFO -  * Detected change in 'C:\\Users\\maksi\\PycharmProjects\\asterica\\utils\\videoEditor.py', reloading
+2025-06-20 00:42:58,762 - INFO -  * Restarting with stat
+2025-06-20 00:43:01,999 - WARNING -  * Debugger is active!
+2025-06-20 00:43:02,006 - INFO -  * Debugger PIN: 775-646-217
+2025-06-20 00:44:25,013 - INFO -  * Detected change in 'C:\\Users\\maksi\\PycharmProjects\\asterica\\utils\\videoEditor.py', reloading
+2025-06-20 00:44:25,267 - INFO -  * Restarting with stat
+2025-06-20 00:44:28,357 - WARNING -  * Debugger is active!
+2025-06-20 00:44:28,365 - INFO -  * Debugger PIN: 775-646-217
+2025-06-20 00:48:34,008 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.4:5000
+2025-06-20 00:48:34,008 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-20 00:48:34,010 - INFO -  * Restarting with stat
+2025-06-20 00:48:37,426 - WARNING -  * Debugger is active!
+2025-06-20 00:48:37,434 - INFO -  * Debugger PIN: 775-646-217
+2025-06-20 00:48:37,552 - INFO - File saved to ./timeMedia\6c7bef46-666b-42d2-89d9-675464c7c396.mp4
+2025-06-20 00:48:45,038 - INFO - File uploaded and cropped successfully: 6c7bef46-666b-42d2-89d9-675464c7c396.mp4
+2025-06-20 00:48:45,045 - INFO - 127.0.0.1 - - [20/Jun/2025 00:48:45] "POST /upload_file HTTP/1.1" 200 -
+2025-06-20 00:57:36,538 - DEBUG - Transformed data: [{'id': 5273914742, 'title': 'Оплата', 'date': 'Тататата', 'description': 'Татататкта', 'state': '1', 'uuid': '6c7bef46-666b-42d2-89d9-675464c7c396'}, {'id': 6214632131, 'title': 'vfrcbv', 'date': '20/04/2009', 'description': 'ddsdsds', 'state': '0', 'uuid': '8fffd6f6-b867-4ef6-9dee-d29341b6eb7c'}, {'id': 5273914742, 'title': 'Максим', 'date': '20.04.2009', 'description': 'Тататат', 'state': '0', 'uuid': '71dcbafe-2578-41b6-a114-0232fdc8c0c1'}, {'id': 5273914742, 'title': 'Максим', 'date': '20.04.1900', 'description': 'Я ебал', 'state': '0', 'uuid': 'a789aa4d-d004-40b8-a54e-a9be108fc9f0'}, {'id': 5273914742, 'title': 'maksim', 'date': '20.04.2009', 'description': 'ser gut', 'state': '0', 'uuid': 'd0e90179-dd8a-4dad-b621-5a6b95baf973'}, {'id': 5273914742, 'title': 'Максим', 'date': '20.04.2009', 'description': 'Мне плохо', 'state': '0', 'uuid': 'd07df855-a741-442f-9e62-6a1a29d2f4a8'}, {'id': 6214632131, 'title': 'Максим', 'date': '20.04.2009', 'description': 'Татататаа', 'state': '0', 'uuid': '2a8fef27-9a33-4191-8b0b-bc26da59ea03'}, {'id': 149464826, 'title': 'Иван', 'date': '13.10.1998', 'description': 'Лла', 'state': '0', 'uuid': 'b71c9a94-5a19-4978-ad50-651a549a3d98'}]
+2025-06-20 00:57:36,538 - INFO - 127.0.0.1 - - [20/Jun/2025 00:57:36] "GET /get_items HTTP/1.1" 200 -
+2025-06-20 00:57:36,800 - DEBUG - Transformed data: [{'id': 5273914742, 'title': 'Оплата', 'date': 'Тататата', 'description': 'Татататкта', 'state': '1', 'uuid': '6c7bef46-666b-42d2-89d9-675464c7c396'}, {'id': 6214632131, 'title': 'vfrcbv', 'date': '20/04/2009', 'description': 'ddsdsds', 'state': '0', 'uuid': '8fffd6f6-b867-4ef6-9dee-d29341b6eb7c'}, {'id': 5273914742, 'title': 'Максим', 'date': '20.04.2009', 'description': 'Тататат', 'state': '0', 'uuid': '71dcbafe-2578-41b6-a114-0232fdc8c0c1'}, {'id': 5273914742, 'title': 'Максим', 'date': '20.04.1900', 'description': 'Я ебал', 'state': '0', 'uuid': 'a789aa4d-d004-40b8-a54e-a9be108fc9f0'}, {'id': 5273914742, 'title': 'maksim', 'date': '20.04.2009', 'description': 'ser gut', 'state': '0', 'uuid': 'd0e90179-dd8a-4dad-b621-5a6b95baf973'}, {'id': 5273914742, 'title': 'Максим', 'date': '20.04.2009', 'description': 'Мне плохо', 'state': '0', 'uuid': 'd07df855-a741-442f-9e62-6a1a29d2f4a8'}, {'id': 6214632131, 'title': 'Максим', 'date': '20.04.2009', 'description': 'Татататаа', 'state': '0', 'uuid': '2a8fef27-9a33-4191-8b0b-bc26da59ea03'}, {'id': 149464826, 'title': 'Иван', 'date': '13.10.1998', 'description': 'Лла', 'state': '0', 'uuid': 'b71c9a94-5a19-4978-ad50-651a549a3d98'}]
+2025-06-20 00:57:36,800 - INFO - 127.0.0.1 - - [20/Jun/2025 00:57:36] "GET /get_items HTTP/1.1" 200 -
+2025-06-20 00:57:38,585 - INFO - 127.0.0.1 - - [20/Jun/2025 00:57:38] "OPTIONS /get_item HTTP/1.1" 200 -
+2025-06-20 00:57:38,897 - INFO - 127.0.0.1 - - [20/Jun/2025 00:57:38] "OPTIONS /get_item HTTP/1.1" 200 -
+2025-06-20 00:57:38,899 - DEBUG - Received param: 8fffd6f6-b867-4ef6-9dee-d29341b6eb7c
+2025-06-20 00:57:38,900 - DEBUG - Order details: [{'id': 6214632131, 'title': 'vfrcbv', 'date': '20/04/2009', 'description': 'ddsdsds', 'state': '0', 'uuid': '8fffd6f6-b867-4ef6-9dee-d29341b6eb7c'}]
+2025-06-20 00:57:38,900 - INFO - 127.0.0.1 - - [20/Jun/2025 00:57:38] "POST /get_item HTTP/1.1" 200 -
+2025-06-20 00:57:39,210 - DEBUG - Received param: 8fffd6f6-b867-4ef6-9dee-d29341b6eb7c
+2025-06-20 00:57:39,210 - DEBUG - Order details: [{'id': 6214632131, 'title': 'vfrcbv', 'date': '20/04/2009', 'description': 'ddsdsds', 'state': '0', 'uuid': '8fffd6f6-b867-4ef6-9dee-d29341b6eb7c'}]
+2025-06-20 00:57:39,211 - INFO - 127.0.0.1 - - [20/Jun/2025 00:57:39] "POST /get_item HTTP/1.1" 200 -
+2025-06-20 00:57:45,452 - INFO - File saved to ./timeMedia\8fffd6f6-b867-4ef6-9dee-d29341b6eb7c.mp4
+2025-06-20 00:57:52,015 - INFO - File uploaded and cropped successfully: 8fffd6f6-b867-4ef6-9dee-d29341b6eb7c.mp4
+2025-06-20 00:57:52,022 - INFO - 127.0.0.1 - - [20/Jun/2025 00:57:52] "POST /upload_file HTTP/1.1" 200 -
+2025-06-20 00:58:10,419 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.4:5000
+2025-06-20 00:58:10,419 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-20 00:58:10,421 - INFO -  * Restarting with stat
+2025-06-20 00:58:13,603 - WARNING -  * Debugger is active!
+2025-06-20 00:58:13,613 - INFO -  * Debugger PIN: 775-646-217
+2025-06-20 00:58:13,736 - INFO - File saved to ./timeMedia\8fffd6f6-b867-4ef6-9dee-d29341b6eb7c.mp4
+2025-06-20 00:58:20,688 - INFO - File uploaded and cropped successfully: 8fffd6f6-b867-4ef6-9dee-d29341b6eb7c.mp4
+2025-06-20 00:58:20,690 - INFO - 127.0.0.1 - - [20/Jun/2025 00:58:20] "POST /upload_file HTTP/1.1" 200 -
+2025-06-20 00:59:19,802 - INFO - 127.0.0.1 - - [20/Jun/2025 00:59:19] "OPTIONS /get_item HTTP/1.1" 200 -
+2025-06-20 00:59:19,803 - INFO - 127.0.0.1 - - [20/Jun/2025 00:59:19] "OPTIONS /get_item HTTP/1.1" 200 -
+2025-06-20 00:59:20,065 - DEBUG - Received param: 8fffd6f6-b867-4ef6-9dee-d29341b6eb7c
+2025-06-20 00:59:20,066 - DEBUG - Order details: [{'id': 6214632131, 'title': 'vfrcbv', 'date': '20/04/2009', 'description': 'ddsdsds', 'state': '1', 'uuid': '8fffd6f6-b867-4ef6-9dee-d29341b6eb7c'}]
+2025-06-20 00:59:20,066 - INFO - 127.0.0.1 - - [20/Jun/2025 00:59:20] "POST /get_item HTTP/1.1" 200 -
+2025-06-20 00:59:20,112 - DEBUG - Received param: 8fffd6f6-b867-4ef6-9dee-d29341b6eb7c
+2025-06-20 00:59:20,113 - DEBUG - Order details: [{'id': 6214632131, 'title': 'vfrcbv', 'date': '20/04/2009', 'description': 'ddsdsds', 'state': '1', 'uuid': '8fffd6f6-b867-4ef6-9dee-d29341b6eb7c'}]
+2025-06-20 00:59:20,114 - INFO - 127.0.0.1 - - [20/Jun/2025 00:59:20] "POST /get_item HTTP/1.1" 200 -
+2025-06-20 00:59:21,143 - DEBUG - Transformed data: [{'id': 5273914742, 'title': 'Оплата', 'date': 'Тататата', 'description': 'Татататкта', 'state': '1', 'uuid': '6c7bef46-666b-42d2-89d9-675464c7c396'}, {'id': 6214632131, 'title': 'vfrcbv', 'date': '20/04/2009', 'description': 'ddsdsds', 'state': '1', 'uuid': '8fffd6f6-b867-4ef6-9dee-d29341b6eb7c'}, {'id': 5273914742, 'title': 'Максим', 'date': '20.04.2009', 'description': 'Тататат', 'state': '0', 'uuid': '71dcbafe-2578-41b6-a114-0232fdc8c0c1'}, {'id': 5273914742, 'title': 'Максим', 'date': '20.04.1900', 'description': 'Я ебал', 'state': '0', 'uuid': 'a789aa4d-d004-40b8-a54e-a9be108fc9f0'}, {'id': 5273914742, 'title': 'maksim', 'date': '20.04.2009', 'description': 'ser gut', 'state': '0', 'uuid': 'd0e90179-dd8a-4dad-b621-5a6b95baf973'}, {'id': 5273914742, 'title': 'Максим', 'date': '20.04.2009', 'description': 'Мне плохо', 'state': '0', 'uuid': 'd07df855-a741-442f-9e62-6a1a29d2f4a8'}, {'id': 6214632131, 'title': 'Максим', 'date': '20.04.2009', 'description': 'Татататаа', 'state': '0', 'uuid': '2a8fef27-9a33-4191-8b0b-bc26da59ea03'}, {'id': 149464826, 'title': 'Иван', 'date': '13.10.1998', 'description': 'Лла', 'state': '0', 'uuid': 'b71c9a94-5a19-4978-ad50-651a549a3d98'}]
+2025-06-20 00:59:21,144 - INFO - 127.0.0.1 - - [20/Jun/2025 00:59:21] "GET /get_items HTTP/1.1" 200 -
+2025-06-20 00:59:21,453 - DEBUG - Transformed data: [{'id': 5273914742, 'title': 'Оплата', 'date': 'Тататата', 'description': 'Татататкта', 'state': '1', 'uuid': '6c7bef46-666b-42d2-89d9-675464c7c396'}, {'id': 6214632131, 'title': 'vfrcbv', 'date': '20/04/2009', 'description': 'ddsdsds', 'state': '1', 'uuid': '8fffd6f6-b867-4ef6-9dee-d29341b6eb7c'}, {'id': 5273914742, 'title': 'Максим', 'date': '20.04.2009', 'description': 'Тататат', 'state': '0', 'uuid': '71dcbafe-2578-41b6-a114-0232fdc8c0c1'}, {'id': 5273914742, 'title': 'Максим', 'date': '20.04.1900', 'description': 'Я ебал', 'state': '0', 'uuid': 'a789aa4d-d004-40b8-a54e-a9be108fc9f0'}, {'id': 5273914742, 'title': 'maksim', 'date': '20.04.2009', 'description': 'ser gut', 'state': '0', 'uuid': 'd0e90179-dd8a-4dad-b621-5a6b95baf973'}, {'id': 5273914742, 'title': 'Максим', 'date': '20.04.2009', 'description': 'Мне плохо', 'state': '0', 'uuid': 'd07df855-a741-442f-9e62-6a1a29d2f4a8'}, {'id': 6214632131, 'title': 'Максим', 'date': '20.04.2009', 'description': 'Татататаа', 'state': '0', 'uuid': '2a8fef27-9a33-4191-8b0b-bc26da59ea03'}, {'id': 149464826, 'title': 'Иван', 'date': '13.10.1998', 'description': 'Лла', 'state': '0', 'uuid': 'b71c9a94-5a19-4978-ad50-651a549a3d98'}]
+2025-06-20 00:59:21,453 - INFO - 127.0.0.1 - - [20/Jun/2025 00:59:21] "GET /get_items HTTP/1.1" 200 -
+2025-06-20 00:59:22,338 - DEBUG - Received param: 71dcbafe-2578-41b6-a114-0232fdc8c0c1
+2025-06-20 00:59:22,339 - DEBUG - Order details: [{'id': 5273914742, 'title': 'Максим', 'date': '20.04.2009', 'description': 'Тататат', 'state': '0', 'uuid': '71dcbafe-2578-41b6-a114-0232fdc8c0c1'}]
+2025-06-20 00:59:22,339 - INFO - 127.0.0.1 - - [20/Jun/2025 00:59:22] "POST /get_item HTTP/1.1" 200 -
+2025-06-20 00:59:22,646 - DEBUG - Received param: 71dcbafe-2578-41b6-a114-0232fdc8c0c1
+2025-06-20 00:59:22,647 - DEBUG - Order details: [{'id': 5273914742, 'title': 'Максим', 'date': '20.04.2009', 'description': 'Тататат', 'state': '0', 'uuid': '71dcbafe-2578-41b6-a114-0232fdc8c0c1'}]
+2025-06-20 00:59:22,647 - INFO - 127.0.0.1 - - [20/Jun/2025 00:59:22] "POST /get_item HTTP/1.1" 200 -
+2025-06-20 00:59:28,453 - INFO - File saved to ./timeMedia\71dcbafe-2578-41b6-a114-0232fdc8c0c1.mp4
+2025-06-20 00:59:35,673 - INFO - File uploaded and cropped successfully: 71dcbafe-2578-41b6-a114-0232fdc8c0c1.mp4
+2025-06-20 00:59:35,682 - INFO - 127.0.0.1 - - [20/Jun/2025 00:59:35] "POST /upload_file HTTP/1.1" 200 -
+2025-06-20 00:59:50,831 - INFO -  * Detected change in 'C:\\Users\\maksi\\PycharmProjects\\asterica\\utils\\videoEditor.py', reloading
+2025-06-20 00:59:51,110 - INFO -  * Restarting with stat
+2025-06-20 00:59:56,841 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.4:5000
+2025-06-20 00:59:56,842 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-20 00:59:56,843 - INFO -  * Restarting with stat
+2025-06-20 00:59:59,722 - WARNING -  * Debugger is active!
+2025-06-20 00:59:59,730 - INFO -  * Debugger PIN: 775-646-217
+2025-06-20 00:59:59,834 - DEBUG - Transformed data: [{'id': 5273914742, 'title': 'Оплата', 'date': 'Тататата', 'description': 'Татататкта', 'state': '1', 'uuid': '6c7bef46-666b-42d2-89d9-675464c7c396'}, {'id': 6214632131, 'title': 'vfrcbv', 'date': '20/04/2009', 'description': 'ddsdsds', 'state': '1', 'uuid': '8fffd6f6-b867-4ef6-9dee-d29341b6eb7c'}, {'id': 5273914742, 'title': 'Максим', 'date': '20.04.2009', 'description': 'Тататат', 'state': '1', 'uuid': '71dcbafe-2578-41b6-a114-0232fdc8c0c1'}, {'id': 5273914742, 'title': 'Максим', 'date': '20.04.1900', 'description': 'Я ебал', 'state': '0', 'uuid': 'a789aa4d-d004-40b8-a54e-a9be108fc9f0'}, {'id': 5273914742, 'title': 'maksim', 'date': '20.04.2009', 'description': 'ser gut', 'state': '0', 'uuid': 'd0e90179-dd8a-4dad-b621-5a6b95baf973'}, {'id': 5273914742, 'title': 'Максим', 'date': '20.04.2009', 'description': 'Мне плохо', 'state': '0', 'uuid': 'd07df855-a741-442f-9e62-6a1a29d2f4a8'}, {'id': 6214632131, 'title': 'Максим', 'date': '20.04.2009', 'description': 'Татататаа', 'state': '0', 'uuid': '2a8fef27-9a33-4191-8b0b-bc26da59ea03'}, {'id': 149464826, 'title': 'Иван', 'date': '13.10.1998', 'description': 'Лла', 'state': '0', 'uuid': 'b71c9a94-5a19-4978-ad50-651a549a3d98'}]
+2025-06-20 00:59:59,835 - INFO - 127.0.0.1 - - [20/Jun/2025 00:59:59] "GET /get_items HTTP/1.1" 200 -
+2025-06-20 01:00:00,147 - DEBUG - Transformed data: [{'id': 5273914742, 'title': 'Оплата', 'date': 'Тататата', 'description': 'Татататкта', 'state': '1', 'uuid': '6c7bef46-666b-42d2-89d9-675464c7c396'}, {'id': 6214632131, 'title': 'vfrcbv', 'date': '20/04/2009', 'description': 'ddsdsds', 'state': '1', 'uuid': '8fffd6f6-b867-4ef6-9dee-d29341b6eb7c'}, {'id': 5273914742, 'title': 'Максим', 'date': '20.04.2009', 'description': 'Тататат', 'state': '1', 'uuid': '71dcbafe-2578-41b6-a114-0232fdc8c0c1'}, {'id': 5273914742, 'title': 'Максим', 'date': '20.04.1900', 'description': 'Я ебал', 'state': '0', 'uuid': 'a789aa4d-d004-40b8-a54e-a9be108fc9f0'}, {'id': 5273914742, 'title': 'maksim', 'date': '20.04.2009', 'description': 'ser gut', 'state': '0', 'uuid': 'd0e90179-dd8a-4dad-b621-5a6b95baf973'}, {'id': 5273914742, 'title': 'Максим', 'date': '20.04.2009', 'description': 'Мне плохо', 'state': '0', 'uuid': 'd07df855-a741-442f-9e62-6a1a29d2f4a8'}, {'id': 6214632131, 'title': 'Максим', 'date': '20.04.2009', 'description': 'Татататаа', 'state': '0', 'uuid': '2a8fef27-9a33-4191-8b0b-bc26da59ea03'}, {'id': 149464826, 'title': 'Иван', 'date': '13.10.1998', 'description': 'Лла', 'state': '0', 'uuid': 'b71c9a94-5a19-4978-ad50-651a549a3d98'}]
+2025-06-20 01:00:00,147 - INFO - 127.0.0.1 - - [20/Jun/2025 01:00:00] "GET /get_items HTTP/1.1" 200 -
+2025-06-20 01:00:01,669 - INFO - 127.0.0.1 - - [20/Jun/2025 01:00:01] "OPTIONS /get_item HTTP/1.1" 200 -
+2025-06-20 01:00:01,973 - INFO - 127.0.0.1 - - [20/Jun/2025 01:00:01] "OPTIONS /get_item HTTP/1.1" 200 -
+2025-06-20 01:00:01,974 - DEBUG - Received param: a789aa4d-d004-40b8-a54e-a9be108fc9f0
+2025-06-20 01:00:01,975 - DEBUG - Order details: [{'id': 5273914742, 'title': 'Максим', 'date': '20.04.1900', 'description': 'Я ебал', 'state': '0', 'uuid': 'a789aa4d-d004-40b8-a54e-a9be108fc9f0'}]
+2025-06-20 01:00:01,976 - INFO - 127.0.0.1 - - [20/Jun/2025 01:00:01] "POST /get_item HTTP/1.1" 200 -
+2025-06-20 01:00:02,288 - DEBUG - Received param: a789aa4d-d004-40b8-a54e-a9be108fc9f0
+2025-06-20 01:00:02,289 - DEBUG - Order details: [{'id': 5273914742, 'title': 'Максим', 'date': '20.04.1900', 'description': 'Я ебал', 'state': '0', 'uuid': 'a789aa4d-d004-40b8-a54e-a9be108fc9f0'}]
+2025-06-20 01:00:02,289 - INFO - 127.0.0.1 - - [20/Jun/2025 01:00:02] "POST /get_item HTTP/1.1" 200 -
+2025-06-20 01:00:06,770 - INFO - File saved to ./timeMedia\a789aa4d-d004-40b8-a54e-a9be108fc9f0.mp4
+2025-06-20 01:00:12,566 - INFO - File uploaded and cropped successfully: a789aa4d-d004-40b8-a54e-a9be108fc9f0.mp4
+2025-06-20 01:00:12,572 - INFO - 127.0.0.1 - - [20/Jun/2025 01:00:12] "POST /upload_file HTTP/1.1" 200 -
+2025-06-20 01:00:29,260 - INFO -  * Detected change in 'C:\\Users\\maksi\\PycharmProjects\\asterica\\utils\\videoEditor.py', reloading
+2025-06-20 01:00:29,533 - INFO -  * Restarting with stat
+2025-06-20 01:00:32,702 - WARNING -  * Debugger is active!
+2025-06-20 01:00:32,711 - INFO -  * Debugger PIN: 775-646-217
+2025-06-20 01:01:24,818 - INFO -  * Detected change in 'C:\\Users\\maksi\\PycharmProjects\\asterica\\utils\\videoEditor.py', reloading
+2025-06-20 01:01:25,207 - INFO -  * Restarting with stat
+2025-06-20 01:01:28,266 - WARNING -  * Debugger is active!
+2025-06-20 01:01:28,275 - INFO -  * Debugger PIN: 775-646-217
+2025-06-20 01:01:37,981 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.4:5000
+2025-06-20 01:01:37,982 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-20 01:01:37,983 - INFO -  * Restarting with stat
+2025-06-20 01:01:41,007 - WARNING -  * Debugger is active!
+2025-06-20 01:01:41,015 - INFO -  * Debugger PIN: 775-646-217
+2025-06-20 01:01:42,017 - INFO - File saved to ./timeMedia\a789aa4d-d004-40b8-a54e-a9be108fc9f0.mp4
+2025-06-20 01:01:46,447 - INFO - File uploaded and cropped successfully: a789aa4d-d004-40b8-a54e-a9be108fc9f0.mp4
+2025-06-20 01:01:46,448 - INFO - 127.0.0.1 - - [20/Jun/2025 01:01:46] "POST /upload_file HTTP/1.1" 200 -
+2025-06-20 01:04:34,515 - INFO -  * Detected change in 'C:\\Users\\maksi\\PycharmProjects\\asterica\\utils\\videoEditor.py', reloading
+2025-06-20 01:04:34,795 - INFO -  * Restarting with stat
+2025-06-20 01:06:27,426 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.4:5000
+2025-06-20 01:06:27,426 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-20 01:06:27,428 - INFO -  * Restarting with stat
+2025-06-20 01:06:30,424 - WARNING -  * Debugger is active!
+2025-06-20 01:06:30,432 - INFO -  * Debugger PIN: 775-646-217
+2025-06-20 01:06:53,271 - INFO - 127.0.0.1 - - [20/Jun/2025 01:06:53] "OPTIONS /get_item HTTP/1.1" 200 -
+2025-06-20 01:06:53,273 - INFO - 127.0.0.1 - - [20/Jun/2025 01:06:53] "OPTIONS /get_item HTTP/1.1" 200 -
+2025-06-20 01:06:53,519 - DEBUG - Received param: a789aa4d-d004-40b8-a54e-a9be108fc9f0
+2025-06-20 01:06:53,520 - DEBUG - Order details: [{'id': 5273914742, 'title': 'Максим', 'date': '20.04.1900', 'description': 'Я ебал', 'state': '1', 'uuid': 'a789aa4d-d004-40b8-a54e-a9be108fc9f0'}]
+2025-06-20 01:06:53,521 - INFO - 127.0.0.1 - - [20/Jun/2025 01:06:53] "POST /get_item HTTP/1.1" 200 -
+2025-06-20 01:06:53,626 - DEBUG - Received param: a789aa4d-d004-40b8-a54e-a9be108fc9f0
+2025-06-20 01:06:53,627 - DEBUG - Order details: [{'id': 5273914742, 'title': 'Максим', 'date': '20.04.1900', 'description': 'Я ебал', 'state': '1', 'uuid': 'a789aa4d-d004-40b8-a54e-a9be108fc9f0'}]
+2025-06-20 01:06:53,628 - INFO - 127.0.0.1 - - [20/Jun/2025 01:06:53] "POST /get_item HTTP/1.1" 200 -
+2025-06-20 01:06:54,864 - DEBUG - Transformed data: [{'id': 5273914742, 'title': 'Оплата', 'date': 'Тататата', 'description': 'Татататкта', 'state': '1', 'uuid': '6c7bef46-666b-42d2-89d9-675464c7c396'}, {'id': 6214632131, 'title': 'vfrcbv', 'date': '20/04/2009', 'description': 'ddsdsds', 'state': '1', 'uuid': '8fffd6f6-b867-4ef6-9dee-d29341b6eb7c'}, {'id': 5273914742, 'title': 'Максим', 'date': '20.04.2009', 'description': 'Тататат', 'state': '1', 'uuid': '71dcbafe-2578-41b6-a114-0232fdc8c0c1'}, {'id': 5273914742, 'title': 'Максим', 'date': '20.04.1900', 'description': 'Я ебал', 'state': '1', 'uuid': 'a789aa4d-d004-40b8-a54e-a9be108fc9f0'}, {'id': 5273914742, 'title': 'maksim', 'date': '20.04.2009', 'description': 'ser gut', 'state': '0', 'uuid': 'd0e90179-dd8a-4dad-b621-5a6b95baf973'}, {'id': 5273914742, 'title': 'Максим', 'date': '20.04.2009', 'description': 'Мне плохо', 'state': '0', 'uuid': 'd07df855-a741-442f-9e62-6a1a29d2f4a8'}, {'id': 6214632131, 'title': 'Максим', 'date': '20.04.2009', 'description': 'Татататаа', 'state': '0', 'uuid': '2a8fef27-9a33-4191-8b0b-bc26da59ea03'}, {'id': 149464826, 'title': 'Иван', 'date': '13.10.1998', 'description': 'Лла', 'state': '0', 'uuid': 'b71c9a94-5a19-4978-ad50-651a549a3d98'}]
+2025-06-20 01:06:54,864 - INFO - 127.0.0.1 - - [20/Jun/2025 01:06:54] "GET /get_items HTTP/1.1" 200 -
+2025-06-20 01:06:55,171 - DEBUG - Transformed data: [{'id': 5273914742, 'title': 'Оплата', 'date': 'Тататата', 'description': 'Татататкта', 'state': '1', 'uuid': '6c7bef46-666b-42d2-89d9-675464c7c396'}, {'id': 6214632131, 'title': 'vfrcbv', 'date': '20/04/2009', 'description': 'ddsdsds', 'state': '1', 'uuid': '8fffd6f6-b867-4ef6-9dee-d29341b6eb7c'}, {'id': 5273914742, 'title': 'Максим', 'date': '20.04.2009', 'description': 'Тататат', 'state': '1', 'uuid': '71dcbafe-2578-41b6-a114-0232fdc8c0c1'}, {'id': 5273914742, 'title': 'Максим', 'date': '20.04.1900', 'description': 'Я ебал', 'state': '1', 'uuid': 'a789aa4d-d004-40b8-a54e-a9be108fc9f0'}, {'id': 5273914742, 'title': 'maksim', 'date': '20.04.2009', 'description': 'ser gut', 'state': '0', 'uuid': 'd0e90179-dd8a-4dad-b621-5a6b95baf973'}, {'id': 5273914742, 'title': 'Максим', 'date': '20.04.2009', 'description': 'Мне плохо', 'state': '0', 'uuid': 'd07df855-a741-442f-9e62-6a1a29d2f4a8'}, {'id': 6214632131, 'title': 'Максим', 'date': '20.04.2009', 'description': 'Татататаа', 'state': '0', 'uuid': '2a8fef27-9a33-4191-8b0b-bc26da59ea03'}, {'id': 149464826, 'title': 'Иван', 'date': '13.10.1998', 'description': 'Лла', 'state': '0', 'uuid': 'b71c9a94-5a19-4978-ad50-651a549a3d98'}]
+2025-06-20 01:06:55,172 - INFO - 127.0.0.1 - - [20/Jun/2025 01:06:55] "GET /get_items HTTP/1.1" 200 -
+2025-06-20 01:06:55,501 - DEBUG - Received param: d0e90179-dd8a-4dad-b621-5a6b95baf973
+2025-06-20 01:06:55,502 - DEBUG - Order details: [{'id': 5273914742, 'title': 'maksim', 'date': '20.04.2009', 'description': 'ser gut', 'state': '0', 'uuid': 'd0e90179-dd8a-4dad-b621-5a6b95baf973'}]
+2025-06-20 01:06:55,502 - INFO - 127.0.0.1 - - [20/Jun/2025 01:06:55] "POST /get_item HTTP/1.1" 200 -
+2025-06-20 01:06:55,810 - DEBUG - Received param: d0e90179-dd8a-4dad-b621-5a6b95baf973
+2025-06-20 01:06:55,810 - DEBUG - Order details: [{'id': 5273914742, 'title': 'maksim', 'date': '20.04.2009', 'description': 'ser gut', 'state': '0', 'uuid': 'd0e90179-dd8a-4dad-b621-5a6b95baf973'}]
+2025-06-20 01:06:55,811 - INFO - 127.0.0.1 - - [20/Jun/2025 01:06:55] "POST /get_item HTTP/1.1" 200 -
+2025-06-20 01:07:00,014 - INFO - File saved to ./timeMedia\d0e90179-dd8a-4dad-b621-5a6b95baf973.mp4
+2025-06-20 01:07:00,394 - ERROR - An error occurred during file upload
+Traceback (most recent call last):
+  File "C:\Users\maksi\PycharmProjects\asterica\server.py", line 111, in upload_file
+    crop_video(file.filename, aspect_ratio) # center
+  File "C:\Users\maksi\PycharmProjects\asterica\utils\videoEditor.py", line 31, in crop_video
+    final_clip = margin_size(clip, left=margin_size, right=margin_size, color=color)
+TypeError: 'int' object is not callable
+2025-06-20 01:07:00,395 - INFO - 127.0.0.1 - - [20/Jun/2025 01:07:00] "[35m[1mPOST /upload_file HTTP/1.1[0m" 500 -
+2025-06-20 01:07:41,406 - INFO -  * Detected change in 'C:\\Users\\maksi\\PycharmProjects\\asterica\\utils\\videoEditor.py', reloading
+2025-06-20 01:07:41,721 - INFO -  * Restarting with stat
+2025-06-20 01:07:44,775 - WARNING -  * Debugger is active!
+2025-06-20 01:07:44,784 - INFO -  * Debugger PIN: 775-646-217
+2025-06-20 01:08:41,602 - INFO -  * Detected change in 'C:\\Users\\maksi\\PycharmProjects\\asterica\\utils\\videoEditor.py', reloading
+2025-06-20 01:08:41,887 - INFO -  * Restarting with stat
+2025-06-20 01:08:45,138 - WARNING -  * Debugger is active!
+2025-06-20 01:08:45,146 - INFO -  * Debugger PIN: 775-646-217
+2025-06-20 13:09:01,078 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.4:5000
+2025-06-20 13:09:01,079 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-20 13:09:01,082 - INFO -  * Restarting with stat
+2025-06-20 13:09:06,487 - WARNING -  * Debugger is active!
+2025-06-20 13:09:06,504 - INFO -  * Debugger PIN: 141-586-893
+2025-06-20 13:09:30,209 - DEBUG - Transformed data: [{'id': 5273914742, 'title': 'Оплата', 'date': 'Тататата', 'description': 'Татататкта', 'state': '1', 'uuid': '6c7bef46-666b-42d2-89d9-675464c7c396'}, {'id': 6214632131, 'title': 'vfrcbv', 'date': '20/04/2009', 'description': 'ddsdsds', 'state': '1', 'uuid': '8fffd6f6-b867-4ef6-9dee-d29341b6eb7c'}, {'id': 5273914742, 'title': 'Максим', 'date': '20.04.2009', 'description': 'Тататат', 'state': '1', 'uuid': '71dcbafe-2578-41b6-a114-0232fdc8c0c1'}, {'id': 5273914742, 'title': 'Максим', 'date': '20.04.1900', 'description': 'Я ебал', 'state': '1', 'uuid': 'a789aa4d-d004-40b8-a54e-a9be108fc9f0'}, {'id': 5273914742, 'title': 'maksim', 'date': '20.04.2009', 'description': 'ser gut', 'state': '0', 'uuid': 'd0e90179-dd8a-4dad-b621-5a6b95baf973'}, {'id': 5273914742, 'title': 'Максим', 'date': '20.04.2009', 'description': 'Мне плохо', 'state': '0', 'uuid': 'd07df855-a741-442f-9e62-6a1a29d2f4a8'}, {'id': 6214632131, 'title': 'Максим', 'date': '20.04.2009', 'description': 'Татататаа', 'state': '0', 'uuid': '2a8fef27-9a33-4191-8b0b-bc26da59ea03'}, {'id': 149464826, 'title': 'Иван', 'date': '13.10.1998', 'description': 'Лла', 'state': '0', 'uuid': 'b71c9a94-5a19-4978-ad50-651a549a3d98'}]
+2025-06-20 13:09:30,211 - INFO - 127.0.0.1 - - [20/Jun/2025 13:09:30] "GET /get_items HTTP/1.1" 200 -
+2025-06-20 13:09:30,464 - DEBUG - Transformed data: [{'id': 5273914742, 'title': 'Оплата', 'date': 'Тататата', 'description': 'Татататкта', 'state': '1', 'uuid': '6c7bef46-666b-42d2-89d9-675464c7c396'}, {'id': 6214632131, 'title': 'vfrcbv', 'date': '20/04/2009', 'description': 'ddsdsds', 'state': '1', 'uuid': '8fffd6f6-b867-4ef6-9dee-d29341b6eb7c'}, {'id': 5273914742, 'title': 'Максим', 'date': '20.04.2009', 'description': 'Тататат', 'state': '1', 'uuid': '71dcbafe-2578-41b6-a114-0232fdc8c0c1'}, {'id': 5273914742, 'title': 'Максим', 'date': '20.04.1900', 'description': 'Я ебал', 'state': '1', 'uuid': 'a789aa4d-d004-40b8-a54e-a9be108fc9f0'}, {'id': 5273914742, 'title': 'maksim', 'date': '20.04.2009', 'description': 'ser gut', 'state': '0', 'uuid': 'd0e90179-dd8a-4dad-b621-5a6b95baf973'}, {'id': 5273914742, 'title': 'Максим', 'date': '20.04.2009', 'description': 'Мне плохо', 'state': '0', 'uuid': 'd07df855-a741-442f-9e62-6a1a29d2f4a8'}, {'id': 6214632131, 'title': 'Максим', 'date': '20.04.2009', 'description': 'Татататаа', 'state': '0', 'uuid': '2a8fef27-9a33-4191-8b0b-bc26da59ea03'}, {'id': 149464826, 'title': 'Иван', 'date': '13.10.1998', 'description': 'Лла', 'state': '0', 'uuid': 'b71c9a94-5a19-4978-ad50-651a549a3d98'}]
+2025-06-20 13:09:30,465 - INFO - 127.0.0.1 - - [20/Jun/2025 13:09:30] "GET /get_items HTTP/1.1" 200 -
+2025-06-20 13:09:40,827 - INFO - 127.0.0.1 - - [20/Jun/2025 13:09:40] "OPTIONS /get_item HTTP/1.1" 200 -
+2025-06-20 13:09:40,830 - INFO - 127.0.0.1 - - [20/Jun/2025 13:09:40] "OPTIONS /get_item HTTP/1.1" 200 -
+2025-06-20 13:09:41,094 - DEBUG - Received param: d0e90179-dd8a-4dad-b621-5a6b95baf973
+2025-06-20 13:09:41,094 - DEBUG - Order details: [{'id': 5273914742, 'title': 'maksim', 'date': '20.04.2009', 'description': 'ser gut', 'state': '0', 'uuid': 'd0e90179-dd8a-4dad-b621-5a6b95baf973'}]
+2025-06-20 13:09:41,095 - INFO - 127.0.0.1 - - [20/Jun/2025 13:09:41] "POST /get_item HTTP/1.1" 200 -
+2025-06-20 13:09:41,140 - DEBUG - Received param: d0e90179-dd8a-4dad-b621-5a6b95baf973
+2025-06-20 13:09:41,140 - DEBUG - Order details: [{'id': 5273914742, 'title': 'maksim', 'date': '20.04.2009', 'description': 'ser gut', 'state': '0', 'uuid': 'd0e90179-dd8a-4dad-b621-5a6b95baf973'}]
+2025-06-20 13:09:41,141 - INFO - 127.0.0.1 - - [20/Jun/2025 13:09:41] "POST /get_item HTTP/1.1" 200 -
+2025-06-20 13:09:50,392 - INFO - 127.0.0.1 - - [20/Jun/2025 13:09:50] "OPTIONS /upload_file HTTP/1.1" 200 -
+2025-06-20 13:09:50,724 - INFO - File saved to ./timeMedia\d0e90179-dd8a-4dad-b621-5a6b95baf973.mp4
+2025-06-20 13:09:50,724 - ERROR - An error occurred during file upload
+Traceback (most recent call last):
+  File "C:\Users\maksi\PycharmProjects\asterica\server.py", line 111, in upload_file
+    crop_video(file.filename, aspect_ratio) # center
+TypeError: crop_video() missing 1 required positional argument: 'center'
+2025-06-20 13:09:50,726 - INFO - 127.0.0.1 - - [20/Jun/2025 13:09:50] "[35m[1mPOST /upload_file HTTP/1.1[0m" 500 -
+2025-06-20 13:09:53,141 - INFO - File saved to ./timeMedia\d0e90179-dd8a-4dad-b621-5a6b95baf973.mp4
+2025-06-20 13:09:53,142 - ERROR - An error occurred during file upload
+Traceback (most recent call last):
+  File "C:\Users\maksi\PycharmProjects\asterica\server.py", line 111, in upload_file
+    crop_video(file.filename, aspect_ratio) # center
+TypeError: crop_video() missing 1 required positional argument: 'center'
+2025-06-20 13:09:53,143 - INFO - 127.0.0.1 - - [20/Jun/2025 13:09:53] "[35m[1mPOST /upload_file HTTP/1.1[0m" 500 -
+2025-06-20 13:10:31,169 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.4:5000
+2025-06-20 13:10:31,169 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-20 13:10:31,180 - INFO -  * Restarting with stat
+2025-06-20 13:10:35,166 - WARNING -  * Debugger is active!
+2025-06-20 13:10:35,176 - INFO -  * Debugger PIN: 141-586-893
+2025-06-20 13:10:35,409 - INFO - 127.0.0.1 - - [20/Jun/2025 13:10:35] "OPTIONS /upload_file HTTP/1.1" 200 -
+2025-06-20 13:10:35,686 - INFO - File saved to ./timeMedia\d0e90179-dd8a-4dad-b621-5a6b95baf973.mp4
+2025-06-20 13:10:41,579 - INFO - File uploaded and cropped successfully: d0e90179-dd8a-4dad-b621-5a6b95baf973.mp4
+2025-06-20 13:10:41,595 - INFO - 127.0.0.1 - - [20/Jun/2025 13:10:41] "POST /upload_file HTTP/1.1" 200 -
+2025-06-20 13:11:11,312 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.4:5000
+2025-06-20 13:11:11,312 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-20 13:11:11,314 - INFO -  * Restarting with stat
+2025-06-20 13:11:15,655 - WARNING -  * Debugger is active!
+2025-06-20 13:11:15,666 - INFO -  * Debugger PIN: 141-586-893
+2025-06-20 13:11:15,797 - INFO - 127.0.0.1 - - [20/Jun/2025 13:11:15] "OPTIONS /upload_file HTTP/1.1" 200 -
+2025-06-20 13:11:15,825 - INFO - File saved to ./timeMedia\d0e90179-dd8a-4dad-b621-5a6b95baf973.mp4
+2025-06-20 13:11:22,714 - INFO - File uploaded and cropped successfully: d0e90179-dd8a-4dad-b621-5a6b95baf973.mp4
+2025-06-20 13:11:22,715 - INFO - 127.0.0.1 - - [20/Jun/2025 13:11:22] "POST /upload_file HTTP/1.1" 200 -
+2025-06-20 13:11:46,751 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.4:5000
+2025-06-20 13:11:46,751 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-20 13:11:46,753 - INFO -  * Restarting with stat
+2025-06-20 13:11:51,111 - WARNING -  * Debugger is active!
+2025-06-20 13:11:51,122 - INFO -  * Debugger PIN: 141-586-893
+2025-06-20 13:11:55,405 - INFO - 127.0.0.1 - - [20/Jun/2025 13:11:55] "OPTIONS /upload_file HTTP/1.1" 200 -
+2025-06-20 13:11:55,686 - INFO - File saved to ./timeMedia\d0e90179-dd8a-4dad-b621-5a6b95baf973.mp4
+2025-06-20 13:12:00,522 - INFO - File uploaded and cropped successfully: d0e90179-dd8a-4dad-b621-5a6b95baf973.mp4
+2025-06-20 13:12:00,524 - INFO - 127.0.0.1 - - [20/Jun/2025 13:12:00] "POST /upload_file HTTP/1.1" 200 -
+2025-06-20 13:12:49,387 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.4:5000
+2025-06-20 13:12:49,387 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-20 13:12:49,389 - INFO -  * Restarting with stat
+2025-06-20 13:12:53,114 - WARNING -  * Debugger is active!
+2025-06-20 13:12:53,124 - INFO -  * Debugger PIN: 141-586-893
+2025-06-20 13:12:53,248 - INFO - 127.0.0.1 - - [20/Jun/2025 13:12:53] "OPTIONS /upload_file HTTP/1.1" 200 -
+2025-06-20 13:12:53,406 - INFO - File saved to ./timeMedia\d0e90179-dd8a-4dad-b621-5a6b95baf973.mp4
+2025-06-20 13:13:00,314 - INFO - File uploaded and cropped successfully: d0e90179-dd8a-4dad-b621-5a6b95baf973.mp4
+2025-06-20 13:13:00,318 - INFO - 127.0.0.1 - - [20/Jun/2025 13:13:00] "POST /upload_file HTTP/1.1" 200 -
+2025-06-20 13:13:20,938 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.4:5000
+2025-06-20 13:13:20,938 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-20 13:13:20,940 - INFO -  * Restarting with stat
+2025-06-20 13:13:24,631 - WARNING -  * Debugger is active!
+2025-06-20 13:13:24,641 - INFO -  * Debugger PIN: 141-586-893
+2025-06-20 13:13:24,762 - INFO - 127.0.0.1 - - [20/Jun/2025 13:13:24] "OPTIONS /upload_file HTTP/1.1" 200 -
+2025-06-20 13:13:24,783 - INFO - File saved to ./timeMedia\d0e90179-dd8a-4dad-b621-5a6b95baf973.mp4
+2025-06-20 13:13:30,410 - INFO - File uploaded and cropped successfully: d0e90179-dd8a-4dad-b621-5a6b95baf973.mp4
+2025-06-20 13:13:30,412 - INFO - 127.0.0.1 - - [20/Jun/2025 13:13:30] "POST /upload_file HTTP/1.1" 200 -
+2025-06-20 13:15:21,449 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.4:5000
+2025-06-20 13:15:21,450 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-20 13:15:21,455 - INFO -  * Restarting with stat
+2025-06-20 13:15:30,625 - WARNING -  * Debugger is active!
+2025-06-20 13:15:30,652 - INFO -  * Debugger PIN: 141-586-893
+2025-06-20 13:15:31,002 - INFO - 127.0.0.1 - - [20/Jun/2025 13:15:31] "OPTIONS /upload_file HTTP/1.1" 200 -
+2025-06-20 13:15:31,052 - INFO - File saved to ./timeMedia\d0e90179-dd8a-4dad-b621-5a6b95baf973.mp4
+2025-06-20 13:15:41,665 - INFO - File uploaded and cropped successfully: d0e90179-dd8a-4dad-b621-5a6b95baf973.mp4
+2025-06-20 13:15:41,668 - INFO - 127.0.0.1 - - [20/Jun/2025 13:15:41] "POST /upload_file HTTP/1.1" 200 -
+2025-06-20 15:51:19,893 - INFO -  * Detected change in 'C:\\Users\\maksi\\PycharmProjects\\asterica\\utils\\videoEditor.py', reloading
+2025-06-20 15:51:20,692 - INFO -  * Restarting with stat
+2025-06-20 15:51:26,044 - WARNING -  * Debugger is active!
+2025-06-20 15:51:26,055 - INFO -  * Debugger PIN: 141-586-893
+2025-06-20 19:44:27,227 - DEBUG - Transformed data: [{'id': 5273914742, 'title': 'Оплата', 'date': 'Тататата', 'description': 'Татататкта', 'state': '1', 'uuid': '6c7bef46-666b-42d2-89d9-675464c7c396'}, {'id': 6214632131, 'title': 'vfrcbv', 'date': '20/04/2009', 'description': 'ddsdsds', 'state': '1', 'uuid': '8fffd6f6-b867-4ef6-9dee-d29341b6eb7c'}, {'id': 5273914742, 'title': 'Максим', 'date': '20.04.2009', 'description': 'Тататат', 'state': '1', 'uuid': '71dcbafe-2578-41b6-a114-0232fdc8c0c1'}, {'id': 5273914742, 'title': 'Максим', 'date': '20.04.1900', 'description': 'Я ебал', 'state': '1', 'uuid': 'a789aa4d-d004-40b8-a54e-a9be108fc9f0'}, {'id': 5273914742, 'title': 'maksim', 'date': '20.04.2009', 'description': 'ser gut', 'state': '1', 'uuid': 'd0e90179-dd8a-4dad-b621-5a6b95baf973'}, {'id': 5273914742, 'title': 'Максим', 'date': '20.04.2009', 'description': 'Мне плохо', 'state': '0', 'uuid': 'd07df855-a741-442f-9e62-6a1a29d2f4a8'}, {'id': 6214632131, 'title': 'Максим', 'date': '20.04.2009', 'description': 'Татататаа', 'state': '0', 'uuid': '2a8fef27-9a33-4191-8b0b-bc26da59ea03'}, {'id': 149464826, 'title': 'Иван', 'date': '13.10.1998', 'description': 'Лла', 'state': '0', 'uuid': 'b71c9a94-5a19-4978-ad50-651a549a3d98'}]
+2025-06-20 19:44:27,242 - INFO - 127.0.0.1 - - [20/Jun/2025 19:44:27] "GET /get_items HTTP/1.1" 200 -
+2025-06-20 19:44:27,410 - DEBUG - Transformed data: [{'id': 5273914742, 'title': 'Оплата', 'date': 'Тататата', 'description': 'Татататкта', 'state': '1', 'uuid': '6c7bef46-666b-42d2-89d9-675464c7c396'}, {'id': 6214632131, 'title': 'vfrcbv', 'date': '20/04/2009', 'description': 'ddsdsds', 'state': '1', 'uuid': '8fffd6f6-b867-4ef6-9dee-d29341b6eb7c'}, {'id': 5273914742, 'title': 'Максим', 'date': '20.04.2009', 'description': 'Тататат', 'state': '1', 'uuid': '71dcbafe-2578-41b6-a114-0232fdc8c0c1'}, {'id': 5273914742, 'title': 'Максим', 'date': '20.04.1900', 'description': 'Я ебал', 'state': '1', 'uuid': 'a789aa4d-d004-40b8-a54e-a9be108fc9f0'}, {'id': 5273914742, 'title': 'maksim', 'date': '20.04.2009', 'description': 'ser gut', 'state': '1', 'uuid': 'd0e90179-dd8a-4dad-b621-5a6b95baf973'}, {'id': 5273914742, 'title': 'Максим', 'date': '20.04.2009', 'description': 'Мне плохо', 'state': '0', 'uuid': 'd07df855-a741-442f-9e62-6a1a29d2f4a8'}, {'id': 6214632131, 'title': 'Максим', 'date': '20.04.2009', 'description': 'Татататаа', 'state': '0', 'uuid': '2a8fef27-9a33-4191-8b0b-bc26da59ea03'}, {'id': 149464826, 'title': 'Иван', 'date': '13.10.1998', 'description': 'Лла', 'state': '0', 'uuid': 'b71c9a94-5a19-4978-ad50-651a549a3d98'}]
+2025-06-20 19:44:27,412 - INFO - 127.0.0.1 - - [20/Jun/2025 19:44:27] "GET /get_items HTTP/1.1" 200 -

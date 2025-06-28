@@ -1,6 +1,6 @@
-import React, { useState, useRef, useEffect } from 'react';
-import styles from '../styles/VideoEditor.module.scss';
-import axios from '../axiosConfig'; // Import the Axios configuration
+import React, { useState, useRef, useEffect } from "react";
+import styles from "../styles/VideoEditor.module.scss";
+import axios from "../axiosConfig"; // Import the Axios configuration
 
 // const ASPECT_RATIOS = [
 //   { label: '16:9', value: 16 / 9 },
@@ -10,19 +10,19 @@ import axios from '../axiosConfig'; // Import the Axios configuration
 // ];
 
 const CENTER_OPTIONS = [
-  { label: 'Center', value: 'center' },
-  { label: 'Top', value: 'top' },
-  { label: 'Bottom', value: 'bottom' },
-  { label: 'Left', value: 'left' },
-  { label: 'Right', value: 'right' },
+  { label: "Center", value: "center" },
+  { label: "Top", value: "top" },
+  { label: "Bottom", value: "bottom" },
+  { label: "Left", value: "left" },
+  { label: "Right", value: "right" },
 ];
 
-function VideoEditorOnlineUpload({link}) {
-  const uploadUrl = '/upload_file'; // Use relative URL since baseURL is set in axiosConfig
+function VideoEditorOnlineUpload({ link }) {
+  const uploadUrl = "/upload_file"; // Use relative URL since baseURL is set in axiosConfig
   const [videoFile, setVideoFile] = useState(null);
   const [previewUrl, setPreviewUrl] = useState(null);
   const [aspectRatio, setAspectRatio] = useState(1);
-  const [center, setCenter] = useState('center');
+  const [center, setCenter] = useState("center");
   const [uploadProgress, setUploadProgress] = useState(null);
   const [status, setStatus] = useState(null);
   const [feedBack, setFeedBack] = useState(null);
@@ -45,80 +45,87 @@ function VideoEditorOnlineUpload({link}) {
 
   const uploadVideo = async () => {
     if (!videoFile) {
-      setStatus('No video selected for upload.');
+      setStatus("No video selected for upload.");
       return;
     }
 
-    setStatus('Uploading...');
+    // Check if the file size is less than 10 MB (10 * 1024 * 1024 bytes)
+    if (videoFile.size > 10 * 1024 * 1024) {
+      setStatus("File size exceeds 10 MB. Please select a smaller file.");
+      return;
+    }
+
+    setStatus("Uploading...");
     setUploadProgress(0);
 
     const formData = new FormData();
-    formData.append('file', videoFile, (link + ".mp4"));
-    formData.append('uuid', link)
-    formData.append('aspectRatio', aspectRatio);
-    console.log(aspectRatio)
-    formData.append('center', center);
-    
+    formData.append("file", videoFile, link + ".mp4");
+    formData.append("uuid", link);
+    formData.append("aspectRatio", aspectRatio);
+    formData.append("center", center);
 
     try {
-      const response = await axios.post(uploadUrl, formData, {headers: {"Content-Type":'multipart/form-data'}},  {
+      const response = await axios.post(uploadUrl, formData, {
+        headers: { "Content-Type": "multipart/form-data" },
         onUploadProgress: (progressEvent) => {
-          const percent = Math.round((progressEvent.loaded / progressEvent.total) * 100);
+          const percent = Math.round(
+            (progressEvent.loaded / progressEvent.total) * 100
+          );
           setUploadProgress(percent);
         },
       });
 
       if (response.status >= 200 && response.status < 300) {
-        setFeedBack(response.data.feedback)
-
-        setStatus('Upload successful!');
+        setFeedBack(response.data.feedback);
+        setStatus("Upload successful!");
         setUploadProgress(null);
       } else {
         setStatus(`Upload failed: ${response.statusText || response.status}`);
         setUploadProgress(null);
       }
     } catch (error) {
-      setStatus('Upload error occurred.');
+      setStatus("Upload error occurred.");
       setUploadProgress(null);
+      console.log(error);
     }
   };
 
   const getObjectPosition = () => {
     switch (center) {
-      case 'top':
-        return 'center top';
-      case 'bottom':
-        return 'center bottom';
-      case 'left':
-        return 'left center';
-      case 'right':
-        return 'right center';
+      case "top":
+        return "center top";
+      case "bottom":
+        return "center bottom";
+      case "left":
+        return "left center";
+      case "right":
+        return "right center";
       default:
-        return 'center center';
+        return "center center";
     }
   };
 
   const containerStyle = {
-    maxWidth: '640px',
-    width: '100%',
+    maxWidth: "640px",
+    width: "100%",
     aspectRatio: aspectRatio,
-    position: 'relative',
-    overflow: 'hidden',
-    borderRadius: '12px',
-    backgroundColor: '#000',
-    marginTop: '16px',
+    position: "relative",
+    overflow: "hidden",
+    borderRadius: "12px",
+    backgroundColor: "#000",
+    marginTop: "16px",
 
-    backgroundColor:'fff',
+    backgroundColor: "fff",
   };
 
   const videoStyle = {
-    width: '100%',
-    height: '100%',
-    objectFit: 'cover',
+    width: "100%",
+    height: "100%",
+    objectFit: "cover",
     objectPosition: getObjectPosition(),
-    borderRadius:"50%",
+    borderRadius: "50%",
   };
-  console.log(feedBack)
+  console.log(feedBack);
 
   return (
     <div className={styles.videoEditorOnlineUpload}>
@@ -126,7 +133,7 @@ function VideoEditorOnlineUpload({link}) {
         <input
           type="file"
           accept="video/mp4,video/*"
-          onChange={e => setVideoFile(e.target.files[0] || null)}
+          onChange={(e) => setVideoFile(e.target.files[0] || null)}
           ref={fileInputRef}
           id="video-upload-input"
           className={styles.fileInput}
@@ -139,11 +146,13 @@ function VideoEditorOnlineUpload({link}) {
           <select
             id="centerSelect"
             value={center}
-            onChange={e => setCenter(e.target.value)}
+            onChange={(e) => setCenter(e.target.value)}
             className={styles.select}
           >
             {CENTER_OPTIONS.map(({ label, value }) => (
-              <option key={value} value={value}>{label}</option>
+              <option key={value} value={value}>
+                {label}
+              </option>
             ))}
           </select>
         </div>
@@ -171,17 +180,26 @@ function VideoEditorOnlineUpload({link}) {
         </div>
       )}
 
-   <div className={styles.progress}>
-      {feedBack !== null && (
-        <>
-        
-        <p className={styles.progress}>Получено: {feedBack.got ? ('да'): ('нет')}</p>
-        <p className={styles.progress}>Сохранено: {feedBack.send ? ('да'): ('нет')}</p>
-        <p className={styles.progress}>Отредактировано: {feedBack.send ? ('да'): ('нет')}</p>
-        <p className={styles.progress}>Отправлено: {feedBack.send ? ('да'): ('нет')}</p>
-        <p className={styles.progress}>Удалено: {feedBack.send ? ('да'): ('нет')}</p>
-        </>
-      )}
+      <div className={styles.progress}>
+        {feedBack !== null && (
+          <>
+            <p className={styles.progress}>
+              Получено: {feedBack.got ? "да" : "нет"}
+            </p>
+            <p className={styles.progress}>
+              Сохранено: {feedBack.send ? "да" : "нет"}
+            </p>
+            <p className={styles.progress}>
+              Отредактировано: {feedBack.send ? "да" : "нет"}
+            </p>
+            <p className={styles.progress}>
+              Отправлено: {feedBack.send ? "да" : "нет"}
+            </p>
+            <p className={styles.progress}>
+              Удалено: {feedBack.send ? "да" : "нет"}
+            </p>
+          </>
+        )}
       </div>
       {status && <p className={styles.status}>{status}</p>}
     </div>

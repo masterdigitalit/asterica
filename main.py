@@ -51,5 +51,13 @@ async def telegram():
 
 # schedule.every(1).minutes.do(notification, bot)
 if __name__ == "__main__":
-    asyncio.run(telegram())
+    loop = asyncio.get_event_loop()
+    try:
+        loop.run_until_complete(telegram())
+    except KeyboardInterrupt:
+        pass
+    finally:
+        loop.run_until_complete(loop.shutdown_asyncgens())
+        loop.close()
+
 

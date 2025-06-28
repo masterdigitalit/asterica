@@ -1,5 +1,11 @@
 import os
-from moviepy.editor import *
+from moviepy import VideoFileClip
+from moviepy import *
+from moviepy.tools import convert_to_seconds
+from moviepy.Clip import Clip
+from moviepy.Effect import Effect
+from moviepy.video.VideoClip import ImageClip
+
 def crop_video(name, target_aspect_ratio, center):
     clip = VideoFileClip(f'./timeMedia/{name}')
     w, h = clip.size
@@ -17,39 +23,39 @@ def crop_video(name, target_aspect_ratio, center):
         new_height = h
         # Determine x offset based on center
         if center == 'left':
-            x1 = 0
+            x_center = new_width / 2
         elif center == 'right':
-            x1 = w - new_width
+            x_center = w - new_width / 2
         else:  # center, top, bottom default horizontal center
-            x1 = (w - new_width) // 2
-        y1 = 0
+            x_center = w / 2
+        y_center = h / 2
     else:
         # Video too tall, crop height
         new_width = w
         new_height = int(w / target_aspect_ratio)
-        x1 = 0
+        x_center = w / 2
         if center == 'top':
-            y1 = 0
+            y_center = new_height / 2
         elif center == 'bottom':
-            y1 = h - new_height
+            y_center = h - new_height / 2
         else:  # center, left, right default vertical center
-            y1 = (h - new_height) // 2
+            y_center = h / 2
 
-    x2 = x1 + new_width
-    y2 = y1 + new_height
 
-    cropped_clip = clip.crop(x1=x1, y1=y1, x2=x2, y2=y2)
+    cropped_clip =clip.cropped(x_center=x_center, y_center=y_center, width=new_width, height=new_height)
+    cropped_clip.with_effects([vfx.Margin(left=100, color=(0,0,0))])
+
+
 
     cropped_clip.write_videofile(
         f"./timeMedia/update_{name}",
         codec="libx264",
-
-        audio_codec="aac" ,
+        audio_codec="aac",
         bitrate="800k",
-        audio_bitrate="96k" ,
+        audio_bitrate="96k",
         preset='medium',
         threads=os.cpu_count() or 4,
-        logger=None,
+        logger=True,
         ffmpeg_params=[
             "-profile:v", "baseline", "-level", "3.0",
             "-pix_fmt", "yuv420p", "-movflags", "+faststart"
@@ -58,32 +64,4 @@ def crop_video(name, target_aspect_ratio, center):
 
     clip.close()
     cropped_clip.close()
-
-async def videoResize(name):
-    print(name)
-    MAX_FILE_SIZE_BYTES = 12 * 1024 * 1024 # Максимальный размер файла кружка (12 MB)
-    CIRCLE_SIZE = 360
-
-    with VideoFileClip(f"../timeMedia/{name}") as input_video:
-
-
-        w, h = input_video.size
-        target_size = CIRCLE_SIZE
-
-        if w > h:
-            resized_clip = input_video.resize(height=target_size)
-        elif h > w:
-            resized_clip = input_video.resize(width=target_size)
-        else:
-            resized_clip = input_video.resize(width=target_size)
-
-
-        output_clip = resized_clip.crop(x_center=resized_clip.w / 2,
-                                        y_center=resized_clip.h / 2,
-                                        width=target_size,
-                                        height=target_size)
-        final_duration = int(output_clip.duration) if output_clip.duration else 0
-
-
-
 

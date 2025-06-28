@@ -3,7 +3,7 @@ from flask_cors import CORS
 import os
 import logging
 from db.main import getOrder, getAllOrders, updateTaskState
-from utils.videoEditor import videoResize, crop_video
+from utils.videoEditor import  crop_video
 from user.sendCircleToUser  import sendVideoToUser
 import asyncio
 
@@ -108,7 +108,7 @@ def upload_file():
         feedback["saved"] = True
         logging.info(f"File saved to {save_path}")
 
-        crop_video(file.filename, aspect_ratio, center)
+        crop_video(file.filename, aspect_ratio, center) # center
         feedback["croped"] = True
         user = getOrder(uuid)
         loop.run_until_complete(sendVideoToUser(id=user[0][0] , name=f"update_{file.filename}"))

@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const axiosInstance = axios.create({
-  baseURL: 'http://localhost:5000',
+  baseURL: 'http://localhost:5000',// http://maksiaoj.beget.tech
 	proxy:"127.0.0.1:12334", // Set your base URL here
   headers: {
     'Content-Type': 'application/json',
